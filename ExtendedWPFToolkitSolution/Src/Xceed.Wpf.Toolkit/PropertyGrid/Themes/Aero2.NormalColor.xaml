@@ -1014,39 +1014,39 @@
 
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.Local}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/Local11.png" />
+                      Value="../Images/Local11.png" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.Resource}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/Resource11.png" />
+                      Value="../Images/Resource11.png" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.Databinding}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/Database11.png" />
+                      Value="../Images/Database11.png" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.Inheritance}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/Inheritance11.png" />
+                      Value="../Images/Inheritance11.png" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.StyleSetter}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/Style11.png" />
+                      Value="../Images/Style11.png" />-->
             </DataTrigger>
             <DataTrigger Binding="{Binding ElementName=_optionsImage, Path=ToolTip}"
                          Value="{x:Static pg:StringConstants.Default}">
-              <Setter TargetName="_optionsImage"
+              <!--<Setter TargetName="_optionsImage"
                       Property="Source"
-                      Value="../Images/AdvancedProperties11.png" />
+                      Value="../Images/AdvancedProperties11.png" />-->
             </DataTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>
