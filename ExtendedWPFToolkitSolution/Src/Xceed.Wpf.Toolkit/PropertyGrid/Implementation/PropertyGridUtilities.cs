@@ -1,14 +1,14 @@
 ﻿/*************************************************************************************
+   
+   Toolkit for WPF
 
-   Extended WPF Toolkit
-
-   Copyright (C) 2007-2013 Xceed Software Inc.
+   Copyright (C) 2007-2019 Xceed Software Inc.
 
    This program is provided to you under the terms of the Microsoft Public
-   License (Ms-PL) as published at http://wpftoolkit.codeplex.com/license 
+   License (Ms-PL) as published at https://github.com/xceedsoftware/wpftoolkit/blob/master/license.md
 
    For more features, controls, and fast professional support,
-   pick up the Plus Edition at http://xceed.com/wpf_toolkit
+   pick up the Plus Edition at https://xceed.com/xceed-toolkit-plus-for-wpf/
 
    Stay informed: follow @datagrid on Twitter or Like http://facebook.com/datagrids
 
@@ -54,6 +54,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
       if( (typeConverter != null)
         && typeConverter.GetStandardValuesSupported( context )
         && typeConverter.GetStandardValuesExclusive( context )
+        && !( typeConverter is ReferenceConverter )  
         && (propertyType != typeof( bool )) && (propertyType != typeof( bool? )) )  //Bool type always have a BooleanConverter with standardValues : True/False.
       {
         var items = typeConverter.GetStandardValues( context );
