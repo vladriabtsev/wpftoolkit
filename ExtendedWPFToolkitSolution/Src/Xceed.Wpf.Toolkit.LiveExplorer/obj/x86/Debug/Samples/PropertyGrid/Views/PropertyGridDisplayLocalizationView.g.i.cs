@@ -10,6 +10,7 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.Collections;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Automation;
@@ -29,21 +30,9 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Xceed.Wpf.Toolkit;
-using Xceed.Wpf.Toolkit.Chromes;
-using Xceed.Wpf.Toolkit.Core.Converters;
-using Xceed.Wpf.Toolkit.Core.Input;
-using Xceed.Wpf.Toolkit.Core.Media;
-using Xceed.Wpf.Toolkit.Core.Utilities;
 using Xceed.Wpf.Toolkit.LiveExplorer;
-using Xceed.Wpf.Toolkit.Panels;
-using Xceed.Wpf.Toolkit.Primitives;
-using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using Xceed.Wpf.Toolkit.PropertyGrid.Commands;
-using Xceed.Wpf.Toolkit.PropertyGrid.Converters;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
-using Xceed.Wpf.Toolkit.Zoombox;
+using Xceed.Wpf.Toolkit.LiveExplorer.Samples.PropertyGrid.Converters;
+using Xceed.Wpf.Toolkit.LiveExplorer.Samples.PropertyGrid.Views;
 
 
 namespace Xceed.Wpf.Toolkit.LiveExplorer.Samples.PropertyGrid.Views {

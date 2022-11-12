@@ -119,7 +119,7 @@ namespace Xceed.Wpf.Toolkit.Primitives
     {
       Size size = base.MeasureOverride( constraint );
 
-      if( this.Children.Count > 0 )
+      if( this.Children != null && this.Children.Count > 0 )
       {
         double width = double.IsNaN( this.Width )
                         ? this.Children.OfType<WindowControl>().Max( ( w ) => w.Left + w.DesiredSize.Width )

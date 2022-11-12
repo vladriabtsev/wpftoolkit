@@ -23,6 +23,7 @@ using System.ComponentModel.DataAnnotations;
 #endif
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace Xceed.Wpf.Toolkit.PropertyGrid
@@ -54,7 +55,6 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
     protected override void GenerateSubPropertiesCore( Action<IEnumerable<PropertyItem>> updatePropertyItemsCallback )
     {
       var propertyItems = new List<PropertyItem>();
-
       if( SelectedObject != null )
       {
         try
