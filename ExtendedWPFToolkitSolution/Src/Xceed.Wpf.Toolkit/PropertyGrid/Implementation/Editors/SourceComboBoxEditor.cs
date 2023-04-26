@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Globalization;
+using System.Reflection;
 using System.Windows.Data;
 
 namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
@@ -40,14 +41,45 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
 
     protected override IValueConverter CreateValueConverter()
     {
-      //When using a stringConverter, we need to convert the value
-      if( (_typeConverter != null) && (_typeConverter is StringConverter) )
-        return new SourceComboBoxEditorConverter( _typeConverter );
-      return null;
+            //When using a stringConverter, we need to convert the value
+            if (_typeConverter != null)
+            {
+                if (_typeConverter is StringConverter)
+                    return new SourceComboBoxEditorConverter(_typeConverter);
+                //if (_typeConverter is EnumConverter)
+                //    return new EnumDescriptionTypeConverter(_typeConverter);
+            }
+            return null;
     }
   }
+    public class EnumDescriptionTypeConverter : EnumConverter
+    {
+        public EnumDescriptionTypeConverter(Type type)
+            : base(type)
+        {
+        }
+        public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
+        {
+            if (destinationType == typeof(string))
+            {
+                if (value != null)
+                {
+                    FieldInfo fi = value.GetType().GetField(value.ToString());
+                    if (fi != null)
+                    {
+                        var attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+                        if (attributes.Length > 0 && !String.IsNullOrEmpty(attributes[0].Description))
+                            return attributes[0].Description;
+                        return value.ToString();
+                    }
+                }
+                return string.Empty;
+            }
+            return base.ConvertTo(context, culture, value, destinationType);
+        }
+    }
 
-  internal class SourceComboBoxEditorConverter : IValueConverter
+    internal class SourceComboBoxEditorConverter : IValueConverter
   {
     private TypeConverter _typeConverter;
 
