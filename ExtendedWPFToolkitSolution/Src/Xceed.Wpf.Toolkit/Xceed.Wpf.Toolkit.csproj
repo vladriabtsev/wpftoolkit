@@ -78,9 +78,6 @@
         <None Remove="Themes\Generic\Images\restore_pressed.png" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
-    </ItemGroup>
-    <ItemGroup>
         <Resource Include="CollectionControl\Images\Delete16.png" />
         <Resource Include="CollectionControl\Images\Duplicate.png" />
         <Resource Include="MultiLineTextEditor\Images\Notes16.png" />
