@@ -16,9 +16,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+
 namespace Xceed.Wpf.Toolkit.PropertyGrid
 {
-  public class PropertyDefinition : PropertyDefinitionBase
+    [DebuggerDisplay("{TargetProperties[0],nq} - Cat:{Category,nq} Exp:{IsExpandable,nq}")]
+    public class PropertyDefinition : PropertyDefinitionBase
   {
     private string _name;
     private bool? _isBrowsable = true;
