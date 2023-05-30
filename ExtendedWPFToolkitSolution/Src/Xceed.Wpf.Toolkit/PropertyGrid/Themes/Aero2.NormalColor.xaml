@@ -820,7 +820,7 @@
     <!--<ControlTemplate x:Key="ErrorAdornerTemplateStyle" TargetType="{x:Type Control}">
         <Grid ClipToBounds="False" >
             <Border BorderBrush="Red" BorderThickness="6" Margin="1" 
-         ToolTip="{Binding ElementName=adornedElement, Path=AdornedElement.(Validation.Errors)/ErrorContent }">
+                ToolTip="{Binding ElementName=adornedElement, Path=AdornedElement.(Validation.Errors)/ErrorContent }">
                 <AdornedElementPlaceholder Name="adornedElement" />
             </Border>
             <Polygon Points="15,15 15,0 0,0"
@@ -830,15 +830,17 @@
                  ToolTip="{Binding ElementName=adornedElement, Path=AdornedElement.(Validation.Errors)/ErrorContent }"/>
         </Grid>
     </ControlTemplate>-->
-    
+
     <Style TargetType="{x:Type pg:PropertyItemBase}">
-        <!--<Setter Property="Validation.ErrorTemplate">
+        <Setter Property="Validation.ErrorTemplate">
             <Setter.Value>
                 <ControlTemplate>
                     <Grid>
-                        <Border BorderBrush="Red" BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Disabled" />
+                        <!--<Border BorderBrush="Red" BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>-->
                         <Canvas HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="{Binding [0].ErrorContent}">
-                            <Polygon Points="-10,0 0,0 0,10" Fill="Red" Stroke="White" />
+                            <!--<Polygon Points="-10,0 0,0 0,10" Fill="Red" Stroke="White" />-->
+                            <!--<Polygon Points="0,0 12,0 12,12 0,12" Fill="Red" Stroke="White" />-->
+                            <Ellipse Width="10" Height="10" Canvas.Left="0" Canvas.Top="0" Fill="Red" />
                             <Canvas.Resources>
                                 <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">
                                     <Setter Property="Background" Value="Red" />
@@ -849,7 +851,7 @@
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
-        </Setter>-->
+        </Setter>
         <Setter Property="Background"
             Value="{x:Static SystemColors.WindowBrush}" />
         <!-- Set the margin at 1 pixel bottom to let the horizontal "line" effect appear. -->
