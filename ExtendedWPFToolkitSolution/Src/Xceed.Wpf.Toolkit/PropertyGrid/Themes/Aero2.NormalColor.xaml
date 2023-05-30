@@ -839,8 +839,9 @@
                         <!--<Border BorderBrush="Red" BorderThickness="1" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>-->
                         <Canvas HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="{Binding [0].ErrorContent}">
                             <!--<Polygon Points="-10,0 0,0 0,10" Fill="Red" Stroke="White" />-->
-                            <!--<Polygon Points="0,0 12,0 12,12 0,12" Fill="Red" Stroke="White" />-->
-                            <Ellipse Width="10" Height="10" Canvas.Left="0" Canvas.Top="0" Fill="Red" />
+                            <Polygon Points="0,0 12,0 0,12" Fill="Red" />
+                            <!--<Polygon Points="0,0 12,0 12,12 0,12" Fill="Red" />-->
+                            <!--<Ellipse Width="10" Height="10" Canvas.Left="0" Canvas.Top="0" Fill="Red" />-->
                             <Canvas.Resources>
                                 <Style TargetType="ToolTip" BasedOn="{StaticResource {x:Type ToolTip}}">
                                     <Setter Property="Background" Value="Red" />
