@@ -24,8 +24,8 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
 {
   public class SourceComboBoxEditor : ComboBoxEditor
   {
-    ICollection _collection;
-    TypeConverter _typeConverter;
+        readonly ICollection _collection;
+        readonly TypeConverter _typeConverter;
 
     public SourceComboBoxEditor( ICollection collection, TypeConverter typeConverter )
     {
@@ -49,7 +49,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
 
   internal class SourceComboBoxEditorConverter : IValueConverter
   {
-    private TypeConverter _typeConverter;
+    private readonly TypeConverter _typeConverter;
 
     internal SourceComboBoxEditorConverter( TypeConverter typeConverter )
     {

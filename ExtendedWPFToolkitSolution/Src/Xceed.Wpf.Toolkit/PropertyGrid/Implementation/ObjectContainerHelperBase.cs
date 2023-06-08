@@ -41,7 +41,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
     // the ItemsSource prevents the items from being displayed.
     // This patch is to avoid such a behavior.
     private bool _isPreparingItemFlag = false;
-    private PropertyItemCollection _propertyItemCollection;
+    private readonly PropertyItemCollection _propertyItemCollection;
 
     public ObjectContainerHelperBase( IPropertyContainer propertyContainer)
       : base( propertyContainer )

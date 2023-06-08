@@ -35,7 +35,7 @@ namespace Xceed.Wpf.Toolkit
 
     #region MaskedTextProvider PROPERTY
 
-    private MaskedTextProvider m_maskedTextProvider;  
+    private readonly MaskedTextProvider m_maskedTextProvider;  
 
     public MaskedTextProvider MaskedTextProvider
     {
@@ -46,7 +46,7 @@ namespace Xceed.Wpf.Toolkit
 
     #region StartPosition PROPERTY
 
-    private int m_startPosition;
+    private readonly int m_startPosition;
 
     public int StartPosition
     {
@@ -57,7 +57,7 @@ namespace Xceed.Wpf.Toolkit
 
     #region SelectionLength PROPERTY
 
-    private int m_selectionLength;
+    private readonly int m_selectionLength;
 
     public int SelectionLength
     {
@@ -68,7 +68,7 @@ namespace Xceed.Wpf.Toolkit
 
     #region Input PROPERTY
 
-    private string m_input;
+    private readonly string m_input;
 
     public string Input
     {

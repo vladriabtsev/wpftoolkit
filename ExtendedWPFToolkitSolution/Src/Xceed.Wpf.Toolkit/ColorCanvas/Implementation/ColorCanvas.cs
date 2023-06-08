@@ -38,7 +38,7 @@ namespace Xceed.Wpf.Toolkit
 
     #region Private Members
 
-    private TranslateTransform _colorShadeSelectorTransform = new TranslateTransform();
+    private readonly TranslateTransform _colorShadeSelectorTransform = new TranslateTransform();
     private Canvas _colorShadingCanvas;
     private Canvas _colorShadeSelector;
     private ColorSpectrumSlider _spectrumSlider;

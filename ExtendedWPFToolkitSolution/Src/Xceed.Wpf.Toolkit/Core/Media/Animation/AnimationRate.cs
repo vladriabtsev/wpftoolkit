@@ -325,11 +325,11 @@ namespace Xceed.Wpf.Toolkit.Media.Animation
     #region Private Fields
 
     [FieldOffset( 0 )]
-    long _duration;
+        readonly long _duration;
     [FieldOffset( 0 )]
-    double _speed;
+        readonly double _speed;
     [FieldOffset( 8 )]
-    RateType _rateType;
+        readonly RateType _rateType;
 
     #endregion
 

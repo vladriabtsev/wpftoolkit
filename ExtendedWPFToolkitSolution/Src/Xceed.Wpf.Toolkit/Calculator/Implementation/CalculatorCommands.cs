@@ -20,7 +20,7 @@ namespace Xceed.Wpf.Toolkit
 {
   public static class CalculatorCommands
   {
-    private static RoutedCommand _calculatorButtonClickCommand = new RoutedCommand();
+    private static readonly RoutedCommand _calculatorButtonClickCommand = new RoutedCommand();
 
     public static RoutedCommand CalculatorButtonClick
     {

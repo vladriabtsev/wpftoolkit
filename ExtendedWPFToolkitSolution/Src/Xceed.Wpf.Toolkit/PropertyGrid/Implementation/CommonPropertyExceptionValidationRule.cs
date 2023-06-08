@@ -27,8 +27,8 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 {
   internal class CommonPropertyExceptionValidationRule : ValidationRule
   {
-    private TypeConverter _propertyTypeConverter;
-    private Type _type;
+    private readonly TypeConverter _propertyTypeConverter;
+    private readonly Type _type;
 
     internal CommonPropertyExceptionValidationRule( Type type )
     {

@@ -30,7 +30,7 @@ namespace Xceed.Wpf.Toolkit.Core
 
     #region Value Property
 
-    private object m_value;
+    private readonly object m_value;
 
     public object Value
     {

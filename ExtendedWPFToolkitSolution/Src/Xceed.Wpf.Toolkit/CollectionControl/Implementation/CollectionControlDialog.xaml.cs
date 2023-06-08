@@ -43,7 +43,7 @@ namespace Xceed.Wpf.Toolkit
     {
         #region Private Members
 
-        private IList originalData = new List<object>();
+        private readonly IList originalData = new List<object>();
 
         #endregion
 

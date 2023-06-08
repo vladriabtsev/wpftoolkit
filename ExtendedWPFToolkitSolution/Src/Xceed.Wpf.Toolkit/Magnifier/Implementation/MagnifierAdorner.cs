@@ -25,7 +25,7 @@ namespace Xceed.Wpf.Toolkit
   {
     #region Members
 
-    private Magnifier _magnifier;
+    private readonly Magnifier _magnifier;
     private Point _currentMousePosition;
     private double _currentZoomFactor;
 

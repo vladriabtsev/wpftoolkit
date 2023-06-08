@@ -29,10 +29,10 @@ namespace Xceed.Wpf.Toolkit
 
     #region Private Members
 
-    private FromText _fromText;
-    private FromDecimal _fromDecimal;
-    private Func<T, T, bool> _fromLowerThan;
-    private Func<T, T, bool> _fromGreaterThan;
+    private readonly FromText _fromText;
+    private readonly FromDecimal _fromDecimal;
+    private readonly Func<T, T, bool> _fromLowerThan;
+    private readonly Func<T, T, bool> _fromGreaterThan;
 
     #endregion
 

@@ -24,7 +24,7 @@ namespace Xceed.Wpf.Toolkit.Core
   {
     #region Members
 
-    private PropertyDescriptorCollection _properties;
+    private readonly PropertyDescriptorCollection _properties;
 
     #endregion
 

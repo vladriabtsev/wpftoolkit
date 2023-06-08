@@ -350,7 +350,7 @@ namespace Xceed.Wpf.Toolkit
     /// </summary>
     /// 
 
-    private static DependencyPropertyKey LowerRangeWidthPropertyKey = DependencyProperty.RegisterAttachedReadOnly( "LowerRangeWidth", typeof( double )
+    private static readonly DependencyPropertyKey LowerRangeWidthPropertyKey = DependencyProperty.RegisterAttachedReadOnly( "LowerRangeWidth", typeof( double )
       , typeof( RangeSlider ), new PropertyMetadata( 0d ) );
 
     public static readonly DependencyProperty LowerRangeWidthProperty = LowerRangeWidthPropertyKey.DependencyProperty;

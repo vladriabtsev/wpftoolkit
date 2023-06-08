@@ -28,16 +28,16 @@ namespace Xceed.Wpf.Toolkit
   {
     #region Private Members
 
-    private static int HoursInDay = 24;
-    private static int MinutesInDay = 1440;
-    private static int MinutesInHour = 60;    
-    private static int SecondsInDay = 86400;
-    private static int SecondsInHour = 3600;
-    private static int SecondsInMinute = 60;
-    private static int MilliSecondsInDay = TimeSpanUpDown.SecondsInDay * 1000;
-    private static int MilliSecondsInHour = TimeSpanUpDown.SecondsInHour * 1000;
-    private static int MilliSecondsInMinute = TimeSpanUpDown.SecondsInMinute * 1000;
-    private static int MilliSecondsInSecond = 1000;
+    private static readonly int HoursInDay = 24;
+    private static readonly int MinutesInDay = 1440;
+    private static readonly int MinutesInHour = 60;    
+    private static readonly int SecondsInDay = 86400;
+    private static readonly int SecondsInHour = 3600;
+    private static readonly int SecondsInMinute = 60;
+    private static readonly int MilliSecondsInDay = TimeSpanUpDown.SecondsInDay * 1000;
+    private static readonly int MilliSecondsInHour = TimeSpanUpDown.SecondsInHour * 1000;
+    private static readonly int MilliSecondsInMinute = TimeSpanUpDown.SecondsInMinute * 1000;
+    private static readonly int MilliSecondsInSecond = 1000;
 
     #endregion
 

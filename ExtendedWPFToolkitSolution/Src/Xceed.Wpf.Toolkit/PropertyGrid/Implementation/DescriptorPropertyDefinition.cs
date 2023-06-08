@@ -37,7 +37,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
     private object _selectedObject;
     private PropertyDescriptor _propertyDescriptor;
     private DependencyPropertyDescriptor _dpDescriptor;
-    private static Dictionary<string, Type> _dictEditorTypeName = new Dictionary<string, Type>();
+    private static readonly Dictionary<string, Type> _dictEditorTypeName = new Dictionary<string, Type>();
 
     #endregion
 

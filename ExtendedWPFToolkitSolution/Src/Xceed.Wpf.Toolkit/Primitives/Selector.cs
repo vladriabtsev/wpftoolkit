@@ -40,11 +40,11 @@ namespace Xceed.Wpf.Toolkit.Primitives
     private int _ignoreSelectedItemsCollectionChanged;
     private int _ignoreSelectedMemberPathValuesChanged;
     private IList _selectedItems;
-    private IList _removedItems = new ObservableCollection<object>();
+    private readonly IList _removedItems = new ObservableCollection<object>();
     private object[] _internalSelectedItems;
 
-    private ValueChangeHelper _selectedMemberPathValuesHelper;
-    private ValueChangeHelper _valueMemberPathValuesHelper;
+    private readonly ValueChangeHelper _selectedMemberPathValuesHelper;
+    private readonly ValueChangeHelper _valueMemberPathValuesHelper;
 
 
 

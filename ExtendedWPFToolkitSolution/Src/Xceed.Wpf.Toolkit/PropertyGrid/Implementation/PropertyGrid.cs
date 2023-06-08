@@ -48,8 +48,8 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
     private bool _hasPendingSelectedObjectChanged;
     private int _initializationCount;
     private ContainerHelperBase _containerHelper;
-    private WeakEventListener<NotifyCollectionChangedEventArgs> _propertyDefinitionsListener;
-    private WeakEventListener<NotifyCollectionChangedEventArgs> _editorDefinitionsListener;
+    private readonly WeakEventListener<NotifyCollectionChangedEventArgs> _propertyDefinitionsListener;
+    private readonly WeakEventListener<NotifyCollectionChangedEventArgs> _editorDefinitionsListener;
 
     #endregion //Members
 

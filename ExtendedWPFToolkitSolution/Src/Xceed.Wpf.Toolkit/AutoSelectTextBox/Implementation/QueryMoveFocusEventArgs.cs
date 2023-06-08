@@ -65,8 +65,8 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private FocusNavigationDirection m_navigationDirection;
-    private bool m_reachedMaxLength;
+    private readonly FocusNavigationDirection m_navigationDirection;
+    private readonly bool m_reachedMaxLength;
     private bool m_canMove = true; //defaults to true... if nobody does nothing, then its capable of moving focus.
 
   }

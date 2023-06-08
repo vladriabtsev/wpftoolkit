@@ -3842,7 +3842,7 @@ namespace Xceed.Wpf.Toolkit.Zoombox
     #region Private Fields
 
     // the default value for a single mouse wheel delta appears to be 28
-    private static int MOUSE_WHEEL_DELTA = 28;
+    private static readonly int MOUSE_WHEEL_DELTA = 28;
 
     // the content control's one and only content presenter
     private ContentPresenter _contentPresenter = null;

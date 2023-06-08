@@ -46,11 +46,11 @@ namespace Xceed.Wpf.Toolkit
     #region Private Members
 
     private Grid _root; 
-    private TranslateTransform _moveTransform = new TranslateTransform();  
+    private readonly TranslateTransform _moveTransform = new TranslateTransform();  
     private bool _startupPositionInitialized;  
     private FrameworkElement _parentContainer;  
-    private Rectangle _modalLayer = new Rectangle();  
-    private Canvas _modalLayerPanel = new Canvas();  
+    private readonly Rectangle _modalLayer = new Rectangle();  
+    private readonly Canvas _modalLayerPanel = new Canvas();  
     private Grid _windowRoot;  
     private WindowControl _windowControl;
     private bool _ignorePropertyChanged;

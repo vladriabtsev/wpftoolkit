@@ -20,7 +20,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Commands
 {
   public class PropertyGridCommands
   {
-    private static RoutedCommand _clearFilterCommand = new RoutedCommand();
+    private static readonly RoutedCommand _clearFilterCommand = new RoutedCommand();
     public static RoutedCommand ClearFilter
     {
       get

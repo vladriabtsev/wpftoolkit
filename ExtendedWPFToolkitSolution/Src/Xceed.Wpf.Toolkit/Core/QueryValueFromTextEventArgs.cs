@@ -30,7 +30,7 @@ namespace Xceed.Wpf.Toolkit.Core
 
     #region Text Property
 
-    private string m_text;
+    private readonly string m_text;
 
     public string Text
     {

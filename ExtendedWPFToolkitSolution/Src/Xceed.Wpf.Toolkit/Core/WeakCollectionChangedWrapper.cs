@@ -27,7 +27,7 @@ namespace Xceed.Wpf.Toolkit.Core
   internal class WeakCollectionChangedWrapper : IList, ICollection, INotifyCollectionChanged
   {
     private WeakEventListener<NotifyCollectionChangedEventArgs> _innerListListener;
-    private IList _innerList;
+    private readonly IList _innerList;
 
     public WeakCollectionChangedWrapper( IList sourceList )
     {

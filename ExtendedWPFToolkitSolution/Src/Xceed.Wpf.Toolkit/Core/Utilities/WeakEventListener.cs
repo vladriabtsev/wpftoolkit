@@ -24,7 +24,7 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
 {
   internal class WeakEventListener<TArgs> : IWeakEventListener where TArgs : EventArgs
   {
-    private Action<object,TArgs> _callback;
+    private readonly Action<object,TArgs> _callback;
 
     public WeakEventListener(Action<object,TArgs> callback)
     {

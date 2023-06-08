@@ -27,7 +27,7 @@ namespace Xceed.Wpf.Toolkit
   {
     #region Private Members
 
-    private object _item;
+    private readonly object _item;
 
     #endregion
 

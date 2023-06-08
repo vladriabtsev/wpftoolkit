@@ -38,7 +38,7 @@ namespace Xceed.Wpf.Toolkit
     /// <summary>
     /// Timer used to delay the initial display and avoid flickering.
     /// </summary>
-    private DispatcherTimer _displayAfterTimer = new DispatcherTimer();
+    private readonly DispatcherTimer _displayAfterTimer = new DispatcherTimer();
 
     #endregion //Private Members
 

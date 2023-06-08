@@ -30,7 +30,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 {
   internal class ObjectContainerHelper : ObjectContainerHelperBase
   {
-    private object _selectedObject;
+    private readonly object _selectedObject;
 
     public ObjectContainerHelper( IPropertyContainer propertyContainer, object selectedObject )
       : base( propertyContainer )

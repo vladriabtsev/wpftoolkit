@@ -158,9 +158,9 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 
     private class EditorTypeDescriptorContext : ITypeDescriptorContext
     {
-      IContainer _container;
-      object _instance;
-      PropertyDescriptor _propertyDescriptor;
+            readonly IContainer _container;
+            readonly object _instance;
+            readonly PropertyDescriptor _propertyDescriptor;
 
       internal EditorTypeDescriptorContext( IContainer container, object instance, PropertyDescriptor pd )
       {

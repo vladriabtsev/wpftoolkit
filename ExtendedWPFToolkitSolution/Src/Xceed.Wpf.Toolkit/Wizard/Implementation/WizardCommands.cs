@@ -21,7 +21,7 @@ namespace Xceed.Wpf.Toolkit
   public static class WizardCommands
   {
 
-    private static RoutedCommand _cancelCommand = new RoutedCommand();
+    private static readonly RoutedCommand _cancelCommand = new RoutedCommand();
     public static RoutedCommand Cancel
     {
       get
@@ -30,7 +30,7 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private static RoutedCommand _finishCommand = new RoutedCommand();
+    private static readonly RoutedCommand _finishCommand = new RoutedCommand();
     public static RoutedCommand Finish
     {
       get
@@ -39,7 +39,7 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private static RoutedCommand _helpCommand = new RoutedCommand();
+    private static readonly RoutedCommand _helpCommand = new RoutedCommand();
     public static RoutedCommand Help
     {
       get
@@ -48,7 +48,7 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private static RoutedCommand _nextPageCommand = new RoutedCommand();
+    private static readonly RoutedCommand _nextPageCommand = new RoutedCommand();
     public static RoutedCommand NextPage
     {
       get
@@ -57,7 +57,7 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private static RoutedCommand _previousPageCommand = new RoutedCommand();
+    private static readonly RoutedCommand _previousPageCommand = new RoutedCommand();
     public static RoutedCommand PreviousPage
     {
       get
@@ -66,7 +66,7 @@ namespace Xceed.Wpf.Toolkit
       }
     }
 
-    private static RoutedCommand _selectPageCommand = new RoutedCommand();
+    private static readonly RoutedCommand _selectPageCommand = new RoutedCommand();
     public static RoutedCommand SelectPage
     {
       get

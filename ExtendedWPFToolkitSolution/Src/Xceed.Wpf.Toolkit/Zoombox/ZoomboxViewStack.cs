@@ -154,7 +154,7 @@ namespace Xceed.Wpf.Toolkit.Zoombox
     }
 
     // maintain a weak reference to the Zoombox that owns the stack
-    private WeakReference _zoomboxRef;
+    private readonly WeakReference _zoomboxRef;
 
     #endregion
 

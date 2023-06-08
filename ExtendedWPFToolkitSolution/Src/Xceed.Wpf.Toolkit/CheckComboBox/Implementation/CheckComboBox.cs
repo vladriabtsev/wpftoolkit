@@ -33,10 +33,10 @@ namespace Xceed.Wpf.Toolkit
 
     #region Members
 
-    private ValueChangeHelper _displayMemberPathValuesChangeHelper;
+    private readonly ValueChangeHelper _displayMemberPathValuesChangeHelper;
     private bool _ignoreTextValueChanged;
     private Popup _popup;
-    private List<object> _initialValue = new List<object>();
+    private readonly List<object> _initialValue = new List<object>();
 
     #endregion
 

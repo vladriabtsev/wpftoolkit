@@ -301,7 +301,7 @@ namespace Xceed.Wpf.Toolkit.Panels
     internal UIElement _switchRoot = null;
     internal Dictionary<string, FrameworkElement> _knownIDs = new Dictionary<string, FrameworkElement>();
 
-    private ContentPresenter _contentPresenter = new ContentPresenter();
+    private readonly ContentPresenter _contentPresenter = new ContentPresenter();
     private bool _isMeasured = false;
 
     private DataTemplate _currentTemplate;

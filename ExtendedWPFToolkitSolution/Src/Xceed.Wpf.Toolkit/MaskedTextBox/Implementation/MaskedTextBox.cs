@@ -43,9 +43,9 @@ namespace Xceed.Wpf.Toolkit
 
     private static readonly char[] MaskChars = { '0', '9', '#', 'L', '?', '&', 'C', 'A', 'a', '.', ',', ':', '/', '$', '<', '>', '|', '\\' };
 
-    private static char DefaultPasswordChar = '\0';
+    private static readonly char DefaultPasswordChar = '\0';
 
-    private static string NullMaskString = "<>";
+    private static readonly string NullMaskString = "<>";
 
     private static string GetRawText( MaskedTextProvider provider )
     {
