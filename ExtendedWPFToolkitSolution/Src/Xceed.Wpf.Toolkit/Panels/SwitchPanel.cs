@@ -653,9 +653,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = SwitchPanel.ActiveLayoutChangedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = SwitchPanel.ActiveLayoutChangedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -688,9 +690,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = SwitchPanel.SwitchAnimationBegunEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = SwitchPanel.SwitchAnimationBegunEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -723,9 +727,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = SwitchPanel.SwitchAnimationCompletedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = SwitchPanel.SwitchAnimationCompletedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 

@@ -55,10 +55,12 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
     {
       get
       {
-        Segment result = new Segment( new Point( 0, 0 ) );
-        result._isP1Excluded = true;
-        result._isP2Excluded = true;
-        return result;
+                Segment result = new Segment(new Point(0, 0))
+                {
+                    _isP1Excluded = true,
+                    _isP2Excluded = true
+                };
+                return result;
       }
     }
 

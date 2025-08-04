@@ -394,9 +394,11 @@ namespace Xceed.Wpf.Toolkit
     {
       SelectedColorText = GetFormatedColorString( newValue );
 
-      RoutedPropertyChangedEventArgs<Color?> args = new RoutedPropertyChangedEventArgs<Color?>( oldValue, newValue );
-      args.RoutedEvent = ColorPicker.SelectedColorChangedEvent;
-      RaiseEvent( args );
+            RoutedPropertyChangedEventArgs<Color?> args = new RoutedPropertyChangedEventArgs<Color?>(oldValue, newValue)
+            {
+                RoutedEvent = ColorPicker.SelectedColorChangedEvent
+            };
+            RaiseEvent( args );
     }
 
     #endregion //SelectedColor

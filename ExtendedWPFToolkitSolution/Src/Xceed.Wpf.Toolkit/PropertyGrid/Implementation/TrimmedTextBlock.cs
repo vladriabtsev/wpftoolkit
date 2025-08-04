@@ -138,10 +138,12 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
       var run = new Run( startUnHighlightedText );
       this.Inlines.Add( run );
 
-      // Highlighted text
-      run = new Run( highlightedText );
-      run.Background = this.HighlightedBrush;
-      this.Inlines.Add( run );
+            // Highlighted text
+            run = new Run(highlightedText)
+            {
+                Background = this.HighlightedBrush
+            };
+            this.Inlines.Add( run );
 
       // End Un-Highlighted text
       run = new Run( endUnHighlightedText );

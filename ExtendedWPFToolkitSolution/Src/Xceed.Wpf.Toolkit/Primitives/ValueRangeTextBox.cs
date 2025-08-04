@@ -786,10 +786,12 @@ namespace Xceed.Wpf.Toolkit.Primitives
       object value = null;
       bool success = this.QueryValueFromTextCore( text, out value );
 
-      QueryValueFromTextEventArgs e = new QueryValueFromTextEventArgs( text, value );
-      e.HasParsingError = !success;
+            QueryValueFromTextEventArgs e = new QueryValueFromTextEventArgs(text, value)
+            {
+                HasParsingError = !success
+            };
 
-      this.OnQueryValueFromText( e );
+            this.OnQueryValueFromText( e );
 
       hasParsingError = e.HasParsingError;
 

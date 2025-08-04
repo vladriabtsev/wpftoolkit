@@ -70,12 +70,14 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
 
     public static bool IsNaN( double value )
     {
-      // used reflector to borrow the high performance IsNan function 
-      // from the WPF MS.Internal namespace
-      NanUnion t = new NanUnion();
-      t.DoubleValue = value;
+            // used reflector to borrow the high performance IsNan function 
+            // from the WPF MS.Internal namespace
+            NanUnion t = new NanUnion
+            {
+                DoubleValue = value
+            };
 
-      UInt64 exp = t.UintValue & 0xfff0000000000000;
+            UInt64 exp = t.UintValue & 0xfff0000000000000;
       UInt64 man = t.UintValue & 0x000fffffffffffff;
 
       return ( exp == 0x7ff0000000000000 || exp == 0xfff0000000000000 ) && ( man != 0 );

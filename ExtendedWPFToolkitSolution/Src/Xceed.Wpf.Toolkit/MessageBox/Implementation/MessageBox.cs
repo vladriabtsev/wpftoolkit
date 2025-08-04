@@ -941,12 +941,14 @@ namespace Xceed.Wpf.Toolkit
     /// <returns></returns>
     private Window CreateContainer()
     {
-      var newWindow = new Window();
-      newWindow.AllowsTransparency = true;
-      newWindow.Background = Brushes.Transparent;
-      newWindow.Content = this;
+            var newWindow = new Window
+            {
+                AllowsTransparency = true,
+                Background = Brushes.Transparent,
+                Content = this
+            };
 
-      if( _ownerHandle != IntPtr.Zero )
+            if ( _ownerHandle != IntPtr.Zero )
       {
         var windowHelper = new WindowInteropHelper( newWindow ) { Owner = _ownerHandle };
         newWindow.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
@@ -985,10 +987,12 @@ namespace Xceed.Wpf.Toolkit
 
       e.Handled = true;
 
-      DragDeltaEventArgs args = new DragDeltaEventArgs( e.HorizontalChange, e.VerticalChange );
-      args.RoutedEvent = HeaderDragDeltaEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            DragDeltaEventArgs args = new DragDeltaEventArgs(e.HorizontalChange, e.VerticalChange)
+            {
+                RoutedEvent = HeaderDragDeltaEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
 
       if( !args.Handled )
       {
@@ -1030,10 +1034,12 @@ namespace Xceed.Wpf.Toolkit
 
       e.Handled = true;
 
-      MouseButtonEventArgs args = new MouseButtonEventArgs( Mouse.PrimaryDevice, 0, MouseButton.Left );
-      args.RoutedEvent = HeaderIconDoubleClickedEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left)
+            {
+                RoutedEvent = HeaderIconDoubleClickedEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
 
       if( !args.Handled )
       {

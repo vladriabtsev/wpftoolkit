@@ -227,9 +227,11 @@ namespace Xceed.Wpf.Toolkit
     {
       SetDisplayText( newValue );
 
-      RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>( oldValue, newValue );
-      args.RoutedEvent = ValueChangedEvent;
-      RaiseEvent( args );
+            RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>(oldValue, newValue)
+            {
+                RoutedEvent = ValueChangedEvent
+            };
+            RaiseEvent( args );
     }
 
     #endregion //Value
@@ -539,9 +541,11 @@ namespace Xceed.Wpf.Toolkit
         }
         else
         {
-          timer = new DispatcherTimer();
-          timer.Interval = TimeSpan.FromMilliseconds( 100 );
-          timer.Tick += Timer_Tick;
+                    timer = new DispatcherTimer
+                    {
+                        Interval = TimeSpan.FromMilliseconds(100)
+                    };
+                    timer.Tick += Timer_Tick;
           _timers.Add( button, timer );
         }
 

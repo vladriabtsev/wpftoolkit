@@ -802,34 +802,42 @@ namespace Xceed.Wpf.Toolkit.Primitives
     private void HeaderPreviewMouseLeftButtonDown( object sender, MouseButtonEventArgs e )
     {
 
-      MouseButtonEventArgs args = new MouseButtonEventArgs( Mouse.PrimaryDevice, 0, MouseButton.Left );
-      args.RoutedEvent = ( e.ClickCount == 2 ) ? HeaderMouseLeftButtonDoubleClickedEvent : HeaderMouseLeftButtonClickedEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left)
+            {
+                RoutedEvent = (e.ClickCount == 2) ? HeaderMouseLeftButtonDoubleClickedEvent : HeaderMouseLeftButtonClickedEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
     }
 
     private void HeaderPreviewMouseRightButtonDown( object sender, MouseButtonEventArgs e )
     {
-      MouseButtonEventArgs args = new MouseButtonEventArgs( Mouse.PrimaryDevice, 0, MouseButton.Right );
-      args.RoutedEvent = HeaderMouseRightButtonClickedEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Right)
+            {
+                RoutedEvent = HeaderMouseRightButtonClickedEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
     }
 
     private void HeaderThumbDragDelta( object sender, DragDeltaEventArgs e )
     {
-      DragDeltaEventArgs args = new DragDeltaEventArgs( e.HorizontalChange, e.VerticalChange );
-      args.RoutedEvent = HeaderDragDeltaEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            DragDeltaEventArgs args = new DragDeltaEventArgs(e.HorizontalChange, e.VerticalChange)
+            {
+                RoutedEvent = HeaderDragDeltaEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
     }
 
     private void IconMouseLeftButtonDown( object sender, MouseButtonEventArgs e )
     {
-      MouseButtonEventArgs args = new MouseButtonEventArgs( Mouse.PrimaryDevice, 0, MouseButton.Left );
-      args.RoutedEvent = ( e.ClickCount == 2 ) ? HeaderIconDoubleClickedEvent : HeaderIconClickedEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left)
+            {
+                RoutedEvent = (e.ClickCount == 2) ? HeaderIconDoubleClickedEvent : HeaderIconClickedEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
     }
 
     private void Close( object sender, RoutedEventArgs e )

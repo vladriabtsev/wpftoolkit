@@ -931,16 +931,18 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
         _containerHelper.ChildrenItemsControl = GetTemplateChild( PART_PropertyItemsControl ) as PropertyItemsControl;
       }
 
-      //Update TranslateTransform in code-behind instead of XAML to remove the
-      //output window error.
-      //When we use FindAncesstor in custom control template for binding internal elements property 
-      //into its ancestor element, Visual Studio displays data warning messages in output window when 
-      //binding engine meets unmatched target type during visual tree traversal though it does the proper 
-      //binding when it receives expected target type during visual tree traversal
-      //ref : http://www.codeproject.com/Tips/124556/How-to-suppress-the-System-Windows-Data-Error-warn
-      TranslateTransform _moveTransform = new TranslateTransform();
-      _moveTransform.X = NameColumnWidth;
-      if( _dragThumb != null )
+            //Update TranslateTransform in code-behind instead of XAML to remove the
+            //output window error.
+            //When we use FindAncesstor in custom control template for binding internal elements property 
+            //into its ancestor element, Visual Studio displays data warning messages in output window when 
+            //binding engine meets unmatched target type during visual tree traversal though it does the proper 
+            //binding when it receives expected target type during visual tree traversal
+            //ref : http://www.codeproject.com/Tips/124556/How-to-suppress-the-System-Windows-Data-Error-warn
+            TranslateTransform _moveTransform = new TranslateTransform
+            {
+                X = NameColumnWidth
+            };
+            if ( _dragThumb != null )
       {
         _dragThumb.RenderTransform = _moveTransform;
       }

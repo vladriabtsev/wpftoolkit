@@ -102,9 +102,11 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 
       if( newValue )
       {
-        var validationError = new ValidationError( new InvalidValueValidationRule(), be );
-        validationError.ErrorContent = "Value could not be converted.";
-        Validation.MarkInvalid( be, validationError );
+                var validationError = new ValidationError(new InvalidValueValidationRule(), be)
+                {
+                    ErrorContent = "Value could not be converted."
+                };
+                Validation.MarkInvalid( be, validationError );
       }
       else
       {

@@ -654,9 +654,11 @@ RoutedPropertyChangedEventHandler<object> ), typeof( UpDownBase<T> ) );
 
     protected virtual void RaiseValueChangedEvent( T oldValue, T newValue )
     {
-      RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>( oldValue, newValue );
-      args.RoutedEvent = ValueChangedEvent;
-      RaiseEvent( args );
+            RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>(oldValue, newValue)
+            {
+                RoutedEvent = ValueChangedEvent
+            };
+            RaiseEvent( args );
     }
 
     protected override void OnInitialized( EventArgs e )

@@ -416,12 +416,14 @@ namespace Xceed.Wpf.Toolkit
         Point pointB = EllipseHelper.PointOfRadialIntersection( _rect, startAngle + directionalFactor * slice * 360 );
         PathSegmentCollection segments = new PathSegmentCollection();
         segments.Add( new LineSegment( pointA, true ) );
-        ArcSegment arc = new ArcSegment();
-        arc.Point = pointB;
-        arc.Size = new Size( _rect.Width / 2, _rect.Height / 2 );
-        arc.IsLargeArc = slice > 0.5;
-        arc.SweepDirection = SweepDirection;
-        segments.Add( arc );
+                ArcSegment arc = new ArcSegment
+                {
+                    Point = pointB,
+                    Size = new Size(_rect.Width / 2, _rect.Height / 2),
+                    IsLargeArc = slice > 0.5,
+                    SweepDirection = SweepDirection
+                };
+                segments.Add( arc );
         PathFigureCollection figures = new PathFigureCollection();
         figures.Add( new PathFigure( RectHelper.Center( _rect ), segments, true ) );
         return new PathGeometry( figures );

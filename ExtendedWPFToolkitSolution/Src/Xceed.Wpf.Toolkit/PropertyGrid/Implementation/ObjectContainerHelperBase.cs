@@ -541,9 +541,11 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
 
     public override Binding CreateChildrenDefaultBinding( PropertyItemBase propertyItem )
     {
-      Binding binding = new Binding( "Value" );
-      binding.Mode = ( ( ( PropertyItem )propertyItem ).IsReadOnly ) ? BindingMode.OneWay : BindingMode.TwoWay;
-      return binding;
+            Binding binding = new Binding("Value")
+            {
+                Mode = (((PropertyItem)propertyItem).IsReadOnly) ? BindingMode.OneWay : BindingMode.TwoWay
+            };
+            return binding;
     }
 
     protected static string GetDefaultPropertyName( object instance )

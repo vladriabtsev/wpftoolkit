@@ -58,11 +58,13 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
     {
       base.SetControlProperties( propertyItem );
 
-      var binding = new Binding( "IsInvalid" );
-      binding.Source = this.Editor;
-      binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
-      binding.Mode = BindingMode.TwoWay;
-      BindingOperations.SetBinding( propertyItem, PropertyItem.IsInvalidProperty, binding );
+            var binding = new Binding("IsInvalid")
+            {
+                Source = this.Editor,
+                UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
+                Mode = BindingMode.TwoWay
+            };
+            BindingOperations.SetBinding( propertyItem, PropertyItem.IsInvalidProperty, binding );
     }
   }
 

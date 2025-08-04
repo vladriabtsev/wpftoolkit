@@ -735,9 +735,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = AnimationPanel.AnimationBegunEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = AnimationPanel.AnimationBegunEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -770,9 +772,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = AnimationPanel.AnimationCompletedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = AnimationPanel.AnimationCompletedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -805,9 +809,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      ChildEnteredEventArgs args = new ChildEnteredEventArgs( child, arrangeRect );
-      args.RoutedEvent = AnimationPanel.ChildEnteredEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            ChildEnteredEventArgs args = new ChildEnteredEventArgs(child, arrangeRect)
+            {
+                RoutedEvent = AnimationPanel.ChildEnteredEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -840,9 +846,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      ChildEnteringEventArgs args = new ChildEnteringEventArgs( child, EnterFrom, ArrangeRect );
-      args.RoutedEvent = AnimationPanel.ChildEnteringEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            ChildEnteringEventArgs args = new ChildEnteringEventArgs(child, EnterFrom, ArrangeRect)
+            {
+                RoutedEvent = AnimationPanel.ChildEnteringEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -875,9 +883,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      ChildExitedEventArgs args = new ChildExitedEventArgs( child );
-      args.RoutedEvent = AnimationPanel.ChildExitedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            ChildExitedEventArgs args = new ChildExitedEventArgs(child)
+            {
+                RoutedEvent = AnimationPanel.ChildExitedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -910,9 +920,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      ChildExitingEventArgs args = new ChildExitingEventArgs( child, exitTo, arrangeRect );
-      args.RoutedEvent = AnimationPanel.ChildExitingEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            ChildExitingEventArgs args = new ChildExitingEventArgs(child, exitTo, arrangeRect)
+            {
+                RoutedEvent = AnimationPanel.ChildExitingEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -945,9 +957,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = AnimationPanel.SwitchLayoutActivatedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = AnimationPanel.SwitchLayoutActivatedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 
@@ -980,9 +994,11 @@ namespace Xceed.Wpf.Toolkit.Panels
       if( target == null )
         return null;
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = AnimationPanel.SwitchLayoutDeactivatedEvent;
-      RoutedEventHelper.RaiseEvent( target, args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = AnimationPanel.SwitchLayoutDeactivatedEvent
+            };
+            RoutedEventHelper.RaiseEvent( target, args );
       return args;
     }
 

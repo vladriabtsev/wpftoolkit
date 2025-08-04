@@ -60,23 +60,22 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
 
     public static object GetBindingValue( object sourceObject, Binding binding )
     {
-      Binding bindingClone = new Binding()
-      {
-        BindsDirectlyToSource = binding.BindsDirectlyToSource,
-        Converter = binding.Converter,
-        ConverterCulture = binding.ConverterCulture,
-        ConverterParameter = binding.ConverterParameter,
-        FallbackValue = binding.FallbackValue,
-        Mode = BindingMode.OneTime, 
-        Path = binding.Path,
-        StringFormat = binding.StringFormat,
-        TargetNullValue = binding.TargetNullValue,
-        XPath = binding.XPath
-      };
+            Binding bindingClone = new Binding
+            {
+                BindsDirectlyToSource = binding.BindsDirectlyToSource,
+                Converter = binding.Converter,
+                ConverterCulture = binding.ConverterCulture,
+                ConverterParameter = binding.ConverterParameter,
+                FallbackValue = binding.FallbackValue,
+                Mode = BindingMode.OneTime,
+                Path = binding.Path,
+                StringFormat = binding.StringFormat,
+                TargetNullValue = binding.TargetNullValue,
+                XPath = binding.XPath,
+                Source = sourceObject
+            };
 
-      bindingClone.Source = sourceObject;
-
-      var targetObj = new GeneralUtilities();
+            var targetObj = new GeneralUtilities();
       BindingOperations.SetBinding( targetObj, GeneralUtilities.StubValueProperty, bindingClone );
       object value = GeneralUtilities.GetStubValue( targetObj );
       BindingOperations.ClearBinding( targetObj, GeneralUtilities.StubValueProperty );

@@ -87,10 +87,12 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
       BindingBase binding = null;
       if( sourceItems != null && path != null )
       {
-        MultiBinding multiBinding = new MultiBinding();
-        multiBinding.Converter = new BlankMultiValueConverter();
+                MultiBinding multiBinding = new MultiBinding
+                {
+                    Converter = new BlankMultiValueConverter()
+                };
 
-        foreach( var item in sourceItems )
+                foreach ( var item in sourceItems )
         {
           multiBinding.Bindings.Add( new Binding( path ) { Source = item } );
         }

@@ -2174,12 +2174,14 @@ namespace Xceed.Wpf.Toolkit.Zoombox
         _viewFinderDisplay.MouseLeftButtonDown += new MouseButtonEventHandler( this.ViewFinderDisplayBeginCapture );
         _viewFinderDisplay.MouseLeftButtonUp += new MouseButtonEventHandler( this.ViewFinderDisplayEndCapture );
 
-        // bind the ViewportRect property of the display to the Viewport of the Zoombox
-        Binding binding = new Binding( "Viewport" );
-        binding.Mode = BindingMode.OneWay;
-        binding.Converter = new ViewFinderSelectionConverter( this );
-        binding.Source = this;
-        _viewFinderDisplay.SetBinding( ZoomboxViewFinderDisplay.ViewportRectProperty, binding );
+                // bind the ViewportRect property of the display to the Viewport of the Zoombox
+                Binding binding = new Binding("Viewport")
+                {
+                    Mode = BindingMode.OneWay,
+                    Converter = new ViewFinderSelectionConverter(this),
+                    Source = this
+                };
+                _viewFinderDisplay.SetBinding( ZoomboxViewFinderDisplay.ViewportRectProperty, binding );
       }
 
       this.UpdateViewFinderDisplayContentBounds();
@@ -2192,11 +2194,13 @@ namespace Xceed.Wpf.Toolkit.Zoombox
 
     private void CreateVisualBrushForViewFinder( Visual visual )
     {
-      _viewFinderDisplay.VisualBrush = new VisualBrush( visual );
-      _viewFinderDisplay.VisualBrush.Stretch = Stretch.Uniform;
-      _viewFinderDisplay.VisualBrush.AlignmentX = AlignmentX.Left;
-      _viewFinderDisplay.VisualBrush.AlignmentY = AlignmentY.Top;
-    }
+            _viewFinderDisplay.VisualBrush = new VisualBrush(visual)
+            {
+                Stretch = Stretch.Uniform,
+                AlignmentX = AlignmentX.Left,
+                AlignmentY = AlignmentY.Top
+            };
+        }
 
     private void ContentPresenterFirstArranged( object sender, EventArgs e )
     {
@@ -3034,18 +3038,24 @@ namespace Xceed.Wpf.Toolkit.Zoombox
 
             if( allowAnimation && IsAnimated )
             {
-              DoubleAnimation daScale = new DoubleAnimation( currentScale, newRelativeScale / _viewboxFactor, AnimationDuration );
-              daScale.AccelerationRatio = this.AnimationAccelerationRatio;
-              daScale.DecelerationRatio = this.AnimationDecelerationRatio;
+                            DoubleAnimation daScale = new DoubleAnimation(currentScale, newRelativeScale / _viewboxFactor, AnimationDuration)
+                            {
+                                AccelerationRatio = this.AnimationAccelerationRatio,
+                                DecelerationRatio = this.AnimationDecelerationRatio
+                            };
 
-              DoubleAnimation daTranslateX = new DoubleAnimation( currentX, newRelativePosition.X, AnimationDuration );
-              daTranslateX.AccelerationRatio = this.AnimationAccelerationRatio;
-              daTranslateX.DecelerationRatio = this.AnimationDecelerationRatio;
+                            DoubleAnimation daTranslateX = new DoubleAnimation(currentX, newRelativePosition.X, AnimationDuration)
+                            {
+                                AccelerationRatio = this.AnimationAccelerationRatio,
+                                DecelerationRatio = this.AnimationDecelerationRatio
+                            };
 
-              DoubleAnimation daTranslateY = new DoubleAnimation( currentY, newRelativePosition.Y, AnimationDuration );
-              daTranslateY.AccelerationRatio = this.AnimationAccelerationRatio;
-              daTranslateY.DecelerationRatio = this.AnimationDecelerationRatio;
-              daTranslateY.CurrentTimeInvalidated += new EventHandler( this.UpdateViewport );
+                            DoubleAnimation daTranslateY = new DoubleAnimation(currentY, newRelativePosition.Y, AnimationDuration)
+                            {
+                                AccelerationRatio = this.AnimationAccelerationRatio,
+                                DecelerationRatio = this.AnimationDecelerationRatio
+                            };
+                            daTranslateY.CurrentTimeInvalidated += new EventHandler( this.UpdateViewport );
               daTranslateY.CurrentStateInvalidated += new EventHandler( this.ZoomAnimationCompleted );
 
               // raise animation beginning event before beginning the animations
@@ -3058,32 +3068,40 @@ namespace Xceed.Wpf.Toolkit.Zoombox
 
               if( this.IsUsingScrollBars )
               {
-                //Vertical scrollBar animations
-                DoubleAnimation verticalMaxAnimation = new DoubleAnimation();
-                verticalMaxAnimation.From = _verticalScrollBar.Maximum;
-                verticalMaxAnimation.To = scaledContentSize.Height - _verticalScrollBar.ViewportSize;
-                verticalMaxAnimation.Duration = AnimationDuration;
-                _verticalScrollBar.BeginAnimation( ScrollBar.MaximumProperty, verticalMaxAnimation );
+                                //Vertical scrollBar animations
+                                DoubleAnimation verticalMaxAnimation = new DoubleAnimation
+                                {
+                                    From = _verticalScrollBar.Maximum,
+                                    To = scaledContentSize.Height - _verticalScrollBar.ViewportSize,
+                                    Duration = AnimationDuration
+                                };
+                                _verticalScrollBar.BeginAnimation( ScrollBar.MaximumProperty, verticalMaxAnimation );
 
-                DoubleAnimation verticalValueAnimation = new DoubleAnimation();
-                verticalValueAnimation.From = _verticalScrollBar.Value;
-                verticalValueAnimation.To = -newRelativePosition.Y;
-                verticalValueAnimation.Duration = AnimationDuration;
-                verticalValueAnimation.Completed += this.VerticalValueAnimation_Completed;
+                                DoubleAnimation verticalValueAnimation = new DoubleAnimation
+                                {
+                                    From = _verticalScrollBar.Value,
+                                    To = -newRelativePosition.Y,
+                                    Duration = AnimationDuration
+                                };
+                                verticalValueAnimation.Completed += this.VerticalValueAnimation_Completed;
                 _verticalScrollBar.BeginAnimation( ScrollBar.ValueProperty, verticalValueAnimation );
 
-                //Horizontal scrollBar animations
-                DoubleAnimation horizontalMaxAnimation = new DoubleAnimation();
-                horizontalMaxAnimation.From = _horizontalScrollBar.Maximum;
-                horizontalMaxAnimation.To = scaledContentSize.Width - _horizontalScrollBar.ViewportSize;
-                horizontalMaxAnimation.Duration = AnimationDuration;
-                _horizontalScrollBar.BeginAnimation( ScrollBar.MaximumProperty, horizontalMaxAnimation );
+                                //Horizontal scrollBar animations
+                                DoubleAnimation horizontalMaxAnimation = new DoubleAnimation
+                                {
+                                    From = _horizontalScrollBar.Maximum,
+                                    To = scaledContentSize.Width - _horizontalScrollBar.ViewportSize,
+                                    Duration = AnimationDuration
+                                };
+                                _horizontalScrollBar.BeginAnimation( ScrollBar.MaximumProperty, horizontalMaxAnimation );
 
-                DoubleAnimation horizontalValueAnimation = new DoubleAnimation();
-                horizontalValueAnimation.From = _horizontalScrollBar.Value;
-                horizontalValueAnimation.To = -newRelativePosition.X;
-                horizontalValueAnimation.Duration = AnimationDuration;
-                horizontalValueAnimation.Completed += this.HorizontalValueAnimation_Completed;
+                                DoubleAnimation horizontalValueAnimation = new DoubleAnimation
+                                {
+                                    From = _horizontalScrollBar.Value,
+                                    To = -newRelativePosition.X,
+                                    Duration = AnimationDuration
+                                };
+                                horizontalValueAnimation.Completed += this.HorizontalValueAnimation_Completed;
                 _horizontalScrollBar.BeginAnimation( ScrollBar.ValueProperty, horizontalValueAnimation );
               }
             }
@@ -3641,13 +3659,14 @@ namespace Xceed.Wpf.Toolkit.Zoombox
 
       if( ZoomOn == ZoomboxZoomOn.View )
       {
-        // Transform the viewport point to the content
-        Point viewportZoomOrigin = new Point();
+                // Transform the viewport point to the content
+                Point viewportZoomOrigin = new Point
+                {
+                    X = this.Viewport.X + (this.Viewport.Width * this.ZoomOrigin.X),
+                    Y = this.Viewport.Y + (this.Viewport.Height * this.ZoomOrigin.Y)
+                };
 
-        viewportZoomOrigin.X = this.Viewport.X + ( this.Viewport.Width * this.ZoomOrigin.X );
-        viewportZoomOrigin.Y = this.Viewport.Y + ( this.Viewport.Height * this.ZoomOrigin.Y );
-
-        Point contentZoomOrigin = _trueContent.TranslatePoint( viewportZoomOrigin, _content );
+                Point contentZoomOrigin = _trueContent.TranslatePoint( viewportZoomOrigin, _content );
 
         if( contentZoomOrigin.X < 0 )
         {

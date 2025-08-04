@@ -117,10 +117,12 @@ namespace Xceed.Wpf.Toolkit.Primitives
 
     private Pen MakePen()
     {
-      Pen pen = new Pen();
-      pen.Brush = this.Stroke;
-      pen.DashCap = this.StrokeDashCap;
-      if( this.StrokeDashArray != null || this.StrokeDashOffset != 0.0 )
+            Pen pen = new Pen
+            {
+                Brush = this.Stroke,
+                DashCap = this.StrokeDashCap
+            };
+            if ( this.StrokeDashArray != null || this.StrokeDashOffset != 0.0 )
       {
         pen.DashStyle = new DashStyle( this.StrokeDashArray, this.StrokeDashOffset );
       }

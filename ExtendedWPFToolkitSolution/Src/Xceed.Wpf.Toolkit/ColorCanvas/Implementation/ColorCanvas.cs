@@ -79,9 +79,11 @@ namespace Xceed.Wpf.Toolkit
       UpdateRGBValues( newValue );
       UpdateColorShadeSelectorPosition( newValue );
 
-      RoutedPropertyChangedEventArgs<Color?> args = new RoutedPropertyChangedEventArgs<Color?>( oldValue, newValue );
-      args.RoutedEvent = SelectedColorChangedEvent;
-      RaiseEvent( args );
+            RoutedPropertyChangedEventArgs<Color?> args = new RoutedPropertyChangedEventArgs<Color?>(oldValue, newValue)
+            {
+                RoutedEvent = SelectedColorChangedEvent
+            };
+            RaiseEvent( args );
     }
 
     #endregion //SelectedColor

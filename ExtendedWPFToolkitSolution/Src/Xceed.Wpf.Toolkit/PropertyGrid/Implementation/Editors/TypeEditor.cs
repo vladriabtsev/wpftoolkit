@@ -64,12 +64,14 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
 
     protected virtual void ResolveValueBinding( PropertyItem propertyItem )
     {
-      var _binding = new Binding( "Value" );
-      _binding.Source = propertyItem;
-      _binding.UpdateSourceTrigger = (Editor is InputBase) ? UpdateSourceTrigger.PropertyChanged : UpdateSourceTrigger.Default;
-      _binding.Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay;
-      _binding.Converter = CreateValueConverter();
-      BindingOperations.SetBinding( Editor, ValueProperty, _binding );
+            var _binding = new Binding("Value")
+            {
+                Source = propertyItem,
+                UpdateSourceTrigger = (Editor is InputBase) ? UpdateSourceTrigger.PropertyChanged : UpdateSourceTrigger.Default,
+                Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay,
+                Converter = CreateValueConverter()
+            };
+            BindingOperations.SetBinding( Editor, ValueProperty, _binding );
     }
 
     protected virtual void SetControlProperties( PropertyItem propertyItem )

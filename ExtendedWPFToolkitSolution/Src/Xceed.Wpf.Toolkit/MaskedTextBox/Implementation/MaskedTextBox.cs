@@ -1317,24 +1317,25 @@ namespace Xceed.Wpf.Toolkit
       char passwordChar,
       bool restrictToAscii )
     {
-      MaskedTextProvider provider = new MaskedTextProvider(
-        mask,
-        cultureInfo,
-        allowPromptAsInput,
-        promptChar,
-        passwordChar,
-        restrictToAscii );
+            MaskedTextProvider provider = new MaskedTextProvider(
+              mask,
+              cultureInfo,
+              allowPromptAsInput,
+              promptChar,
+              passwordChar,
+              restrictToAscii)
+            {
+                ResetOnPrompt = this.ResetOnPrompt,
+                ResetOnSpace = this.ResetOnSpace,
+                SkipLiterals = this.SkipLiterals,
 
-      provider.ResetOnPrompt = this.ResetOnPrompt;
-      provider.ResetOnSpace = this.ResetOnSpace;
-      provider.SkipLiterals = this.SkipLiterals;
+                IncludeLiterals = true,
+                IncludePrompt = true,
 
-      provider.IncludeLiterals = true;
-      provider.IncludePrompt = true;
+                IsPassword = false
+            };
 
-      provider.IsPassword = false;
-
-      return provider;
+            return provider;
     }
 
     internal override void OnIMECompositionEnded( CachedTextInfo cachedTextInfo )

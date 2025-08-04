@@ -544,10 +544,12 @@ namespace Xceed.Wpf.Toolkit
 
       e.Handled = true;
 
-      DragDeltaEventArgs args = new DragDeltaEventArgs( e.HorizontalChange, e.VerticalChange );
-      args.RoutedEvent = HeaderDragDeltaEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            DragDeltaEventArgs args = new DragDeltaEventArgs(e.HorizontalChange, e.VerticalChange)
+            {
+                RoutedEvent = HeaderDragDeltaEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
 
       if( !args.Handled )
       {
@@ -573,10 +575,12 @@ namespace Xceed.Wpf.Toolkit
 
       e.Handled = true;
 
-      MouseButtonEventArgs args = new MouseButtonEventArgs( Mouse.PrimaryDevice, 0, MouseButton.Left );
-      args.RoutedEvent = HeaderIconDoubleClickedEvent;
-      args.Source = this;
-      this.RaiseEvent( args );
+            MouseButtonEventArgs args = new MouseButtonEventArgs(Mouse.PrimaryDevice, 0, MouseButton.Left)
+            {
+                RoutedEvent = HeaderIconDoubleClickedEvent,
+                Source = this
+            };
+            this.RaiseEvent( args );
 
       if( !args.Handled )
       {

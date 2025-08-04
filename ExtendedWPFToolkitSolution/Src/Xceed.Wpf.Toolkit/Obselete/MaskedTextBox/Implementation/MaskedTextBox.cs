@@ -222,9 +222,11 @@ namespace Xceed.Wpf.Toolkit.Obselete
       if( _isInitialized )
         SyncTextAndValueProperties( MaskedTextBox.ValueProperty, newValue );
 
-      RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>( oldValue, newValue );
-      args.RoutedEvent = MaskedTextBox.ValueChangedEvent;
-      RaiseEvent( args );
+            RoutedPropertyChangedEventArgs<object> args = new RoutedPropertyChangedEventArgs<object>(oldValue, newValue)
+            {
+                RoutedEvent = MaskedTextBox.ValueChangedEvent
+            };
+            RaiseEvent( args );
     }
 
     #endregion //Value

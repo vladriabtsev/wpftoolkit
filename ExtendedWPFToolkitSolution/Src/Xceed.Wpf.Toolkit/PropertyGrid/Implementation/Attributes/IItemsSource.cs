@@ -41,18 +41,22 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Attributes
   {
     public void Add( object value )
     {
-      Item item = new Item();
-      item.DisplayName = value.ToString();
-      item.Value = value;
-      base.Add( item );
+            Item item = new Item
+            {
+                DisplayName = value.ToString(),
+                Value = value
+            };
+            base.Add( item );
     }
 
     public void Add( object value, string displayName )
     {
-      Item newItem = new Item();
-      newItem.DisplayName = displayName;
-      newItem.Value = value;
-      base.Add( newItem );
+            Item newItem = new Item
+            {
+                DisplayName = displayName,
+                Value = value
+            };
+            base.Add( newItem );
     }
   }
 }

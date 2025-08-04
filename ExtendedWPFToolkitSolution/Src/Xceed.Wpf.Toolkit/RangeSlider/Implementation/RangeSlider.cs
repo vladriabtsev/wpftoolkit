@@ -253,9 +253,11 @@ namespace Xceed.Wpf.Toolkit
     {
       this.AdjustView();
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = RangeSlider.HigherValueChangedEvent;
-      this.RaiseEvent( args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = RangeSlider.HigherValueChangedEvent
+            };
+            this.RaiseEvent( args );
     }
 
     #endregion HigherValue
@@ -436,9 +438,11 @@ namespace Xceed.Wpf.Toolkit
     {
       this.AdjustView();
 
-      RoutedEventArgs args = new RoutedEventArgs();
-      args.RoutedEvent = RangeSlider.LowerValueChangedEvent;
-      this.RaiseEvent( args );
+            RoutedEventArgs args = new RoutedEventArgs
+            {
+                RoutedEvent = RangeSlider.LowerValueChangedEvent
+            };
+            this.RaiseEvent( args );
     }
 
     #endregion LowerValue
@@ -899,9 +903,11 @@ namespace Xceed.Wpf.Toolkit
 
     private CoercedValues GetCoercedValues()
     {
-      CoercedValues cv = new CoercedValues();
-      cv.Minimum = Math.Min( this.Minimum, this.Maximum );
-      cv.Maximum = Math.Max( cv.Minimum, this.Maximum );
+            CoercedValues cv = new CoercedValues
+            {
+                Minimum = Math.Min(this.Minimum, this.Maximum)
+            };
+            cv.Maximum = Math.Max( cv.Minimum, this.Maximum );
       cv.LowerValue = Math.Max( cv.Minimum, Math.Min( cv.Maximum, this.LowerValue ) );
       cv.HigherValue = Math.Max( cv.Minimum, Math.Min( cv.Maximum, this.HigherValue ) );
       cv.HigherValue = Math.Max( cv.LowerValue, cv.HigherValue );
