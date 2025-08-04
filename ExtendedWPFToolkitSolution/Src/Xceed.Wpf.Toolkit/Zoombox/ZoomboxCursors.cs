@@ -30,6 +30,7 @@ namespace Xceed.Wpf.Toolkit.Zoombox
     {
       try
       {
+        // https://learn.microsoft.com/en-us/previous-versions/dotnet/framework/code-access-security/how-to-run-partially-trusted-code-in-a-sandbox
         new EnvironmentPermission( PermissionState.Unrestricted ).Demand();
         _zoom = new Cursor( ResourceHelper.LoadResourceStream( Assembly.GetExecutingAssembly(), "Zoombox/Resources/Zoom.cur" ) );
         _zoomRelative = new Cursor( ResourceHelper.LoadResourceStream( Assembly.GetExecutingAssembly(), "Zoombox/Resources/ZoomRelative.cur" ) );
