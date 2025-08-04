@@ -346,7 +346,7 @@ namespace Xceed.Wpf.Toolkit
       List<string> selectedValues = null;
       if( !String.IsNullOrEmpty( this.Text ) )
       {
-        selectedValues = this.Text.Replace( " ", string.Empty ).Split( new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries ).ToList();
+        selectedValues = [.. this.Text.Replace( " ", string.Empty ).Split( new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries )];
       }
 
       this.UpdateFromList( selectedValues, this.GetItemDisplayValue );

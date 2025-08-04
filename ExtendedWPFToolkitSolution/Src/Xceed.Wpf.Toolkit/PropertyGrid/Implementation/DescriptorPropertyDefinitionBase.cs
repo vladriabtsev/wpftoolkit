@@ -314,7 +314,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
       }
 #endif
 
-      List<PropertyOrderAttribute> list = pd.Attributes.OfType<PropertyOrderAttribute>().ToList();
+      List<PropertyOrderAttribute> list = [.. pd.Attributes.OfType<PropertyOrderAttribute>()];
 
       if( list.Count > 0 )
       {

@@ -78,8 +78,8 @@ namespace Xceed.Wpf.Toolkit
       var isContainingDateTimeSeparators = dateTimeSeparators.Any( s => dateTime.Contains( s ) );
       if( isContainingDateTimeSeparators )
       {
-        dateTimeParts = dateTime.Split( dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries ).ToList();
-        formats = format.Split( dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries ).ToList();
+        dateTimeParts = [.. dateTime.Split( dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries )];
+        formats = [.. format.Split( dateTimeSeparators, StringSplitOptions.RemoveEmptyEntries )];
       }
       else
       {

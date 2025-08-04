@@ -912,7 +912,7 @@ namespace Xceed.Wpf.Toolkit.Primitives
       List<string> selectedValues = null;
       if( !String.IsNullOrEmpty( SelectedValue ) )
       {
-        selectedValues = SelectedValue.Split( new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries ).ToList();
+        selectedValues = [.. SelectedValue.Split( new string[] { Delimiter }, StringSplitOptions.RemoveEmptyEntries )];
       }
 
       this.UpdateFromList( selectedValues, this.GetItemValue );

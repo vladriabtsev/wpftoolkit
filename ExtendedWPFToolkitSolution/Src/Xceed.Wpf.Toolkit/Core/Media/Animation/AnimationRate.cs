@@ -28,7 +28,7 @@ namespace Xceed.Wpf.Toolkit.Media.Animation
   {
     #region Static Fields
 
-    private static AnimationRate _default = new AnimationRate( true );
+    private static readonly AnimationRate _default = new AnimationRate( true );
 
     #endregion
 

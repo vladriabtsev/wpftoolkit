@@ -326,7 +326,7 @@ namespace Xceed.Wpf.Toolkit
     private void SyncTextPassword( int nextCarretIndex )
     {
       var sb = new StringBuilder();
-      this.Text = sb.Append( Enumerable.Repeat(this.PasswordChar, this.Password.Length).ToArray() ).ToString();
+      this.Text = sb.Append([.. Enumerable.Repeat(this.PasswordChar, this.Password.Length)]).ToString();
       //set CaretIndex after Text is changed
       this.CaretIndex = Math.Max( nextCarretIndex, 0 );
     }

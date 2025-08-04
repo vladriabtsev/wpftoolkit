@@ -48,7 +48,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
           // Using the special character "*" in a string of TargetProperties will
           // return all the items containing the string (before or after) the "*".
           // ex : Prop* will return properties named Prop1, Prop2, Prop3...
-          List<string> stringTargetProperties = item.TargetProperties.OfType<string>().ToList();
+          List<string> stringTargetProperties = [.. item.TargetProperties.OfType<string>()];
           if( ( stringTargetProperties != null ) && ( stringTargetProperties.Count > 0 ) )
           {
             if( propertyId is string )

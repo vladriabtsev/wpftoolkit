@@ -323,11 +323,11 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid
           var properties = from p in descriptorsProperties
                            where p.ComponentType == instance.GetType()
                            select p;
-          return properties.ToList();
+          return [.. properties];
         }
         else
         {
-          return descriptorsProperties.ToList();
+          return [.. descriptorsProperties];
         }
       }
 

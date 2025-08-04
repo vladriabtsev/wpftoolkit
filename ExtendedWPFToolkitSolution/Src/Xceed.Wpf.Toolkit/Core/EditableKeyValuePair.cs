@@ -57,7 +57,7 @@ namespace Xceed.Wpf.Toolkit.Core
       var ValueDescriptor = TypeDescriptor.CreateProperty( this.GetType(), "Value", typeof( TValue ) );
       propertyList.Add( ValueDescriptor );
 
-      _properties = new PropertyDescriptorCollection( propertyList.ToArray() );
+      _properties = new PropertyDescriptorCollection([.. propertyList]);
     }
 
     public EditableKeyValuePair( TKey key, TValue value )

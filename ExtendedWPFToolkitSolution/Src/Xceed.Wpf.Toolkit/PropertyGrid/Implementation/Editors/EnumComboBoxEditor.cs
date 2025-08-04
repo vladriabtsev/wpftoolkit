@@ -53,7 +53,7 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
         }
       }
 
-      return values.ToArray();
+      return [.. values];
     }
   }
 }
