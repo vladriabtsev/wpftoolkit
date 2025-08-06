@@ -14,52 +14,46 @@
 
   ***********************************************************************************/
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Media;
 
 namespace Xceed.Wpf.Toolkit.Core.Utilities
 {
-  internal sealed class GeneralUtilities : DependencyObject
-  {
-    private GeneralUtilities() { }
-
-    #region StubValue attached property
-
-    internal static readonly DependencyProperty StubValueProperty = DependencyProperty.RegisterAttached(
-      "StubValue",
-      typeof( object ),
-      typeof( GeneralUtilities ),
-      new FrameworkPropertyMetadata( null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault ) );
-
-    internal static object GetStubValue( DependencyObject obj )
+    internal sealed class GeneralUtilities : DependencyObject
     {
-      return ( object )obj.GetValue( GeneralUtilities.StubValueProperty );
-    }
+        private GeneralUtilities() { }
 
-    internal static void SetStubValue( DependencyObject obj, object value )
-    {
-      obj.SetValue( GeneralUtilities.StubValueProperty, value );
-    }
+        #region StubValue attached property
 
-    #endregion StubValue attached property
+        internal static readonly DependencyProperty StubValueProperty = DependencyProperty.RegisterAttached(
+          "StubValue",
+          typeof(object),
+          typeof(GeneralUtilities),
+          new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
-    public static object GetPathValue( object sourceObject, string path )
-    {
-      var targetObj = new GeneralUtilities();
-      BindingOperations.SetBinding( targetObj, GeneralUtilities.StubValueProperty, new Binding( path ) { Source = sourceObject } );
-      object value = GeneralUtilities.GetStubValue( targetObj );
-      BindingOperations.ClearBinding( targetObj, GeneralUtilities.StubValueProperty );
-      return value;
-    }
+        internal static object GetStubValue(DependencyObject obj)
+        {
+            return (object)obj.GetValue(GeneralUtilities.StubValueProperty);
+        }
 
-    public static object GetBindingValue( object sourceObject, Binding binding )
-    {
+        internal static void SetStubValue(DependencyObject obj, object value)
+        {
+            obj.SetValue(GeneralUtilities.StubValueProperty, value);
+        }
+
+        #endregion StubValue attached property
+
+        public static object GetPathValue(object sourceObject, string path)
+        {
+            var targetObj = new GeneralUtilities();
+            BindingOperations.SetBinding(targetObj, GeneralUtilities.StubValueProperty, new Binding(path) { Source = sourceObject });
+            object value = GeneralUtilities.GetStubValue(targetObj);
+            BindingOperations.ClearBinding(targetObj, GeneralUtilities.StubValueProperty);
+            return value;
+        }
+
+        public static object GetBindingValue(object sourceObject, Binding binding)
+        {
             Binding bindingClone = new Binding
             {
                 BindsDirectlyToSource = binding.BindsDirectlyToSource,
@@ -76,17 +70,17 @@ namespace Xceed.Wpf.Toolkit.Core.Utilities
             };
 
             var targetObj = new GeneralUtilities();
-      BindingOperations.SetBinding( targetObj, GeneralUtilities.StubValueProperty, bindingClone );
-      object value = GeneralUtilities.GetStubValue( targetObj );
-      BindingOperations.ClearBinding( targetObj, GeneralUtilities.StubValueProperty );
-      return value;
-    }
+            BindingOperations.SetBinding(targetObj, GeneralUtilities.StubValueProperty, bindingClone);
+            object value = GeneralUtilities.GetStubValue(targetObj);
+            BindingOperations.ClearBinding(targetObj, GeneralUtilities.StubValueProperty);
+            return value;
+        }
 
-    internal static bool CanConvertValue( object value, object targetType )
-    {
-      return ( ( value != null )
-              && ( !object.Equals( value.GetType(), targetType ) )
-              && ( !object.Equals( targetType, typeof( object ) ) ) );
+        internal static bool CanConvertValue(object value, object targetType)
+        {
+            return ((value != null)
+                    && (!object.Equals(value.GetType(), targetType))
+                    && (!object.Equals(targetType, typeof(object))));
+        }
     }
-  }
 }

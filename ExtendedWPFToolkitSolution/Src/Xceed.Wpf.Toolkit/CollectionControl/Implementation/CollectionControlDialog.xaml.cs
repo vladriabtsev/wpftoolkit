@@ -18,16 +18,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows;
-using System.Windows.Media;
-using Xceed.Wpf.Toolkit.Core.Utilities;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Security;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows;
+using System.Windows.Media;
+using Xceed.Wpf.Toolkit.Core.Utilities;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using System.Text.Json;
 
 namespace Xceed.Wpf.Toolkit
 {

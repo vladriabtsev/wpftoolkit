@@ -20,50 +20,50 @@ using Xceed.Wpf.Toolkit.Primitives;
 
 namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
 {
-  public abstract class TypeEditor<T> : ITypeEditor where T : FrameworkElement, new()
-  {
-    #region Properties
-
-    protected T Editor
+    public abstract class TypeEditor<T> : ITypeEditor where T : FrameworkElement, new()
     {
-      get;
-      set;
-    }
-    protected DependencyProperty ValueProperty
-    {
-      get;
-      set;
-    }
+        #region Properties
 
-    #endregion //Properties
+        protected T Editor
+        {
+            get;
+            set;
+        }
+        protected DependencyProperty ValueProperty
+        {
+            get;
+            set;
+        }
 
-    #region ITypeEditor Members
+        #endregion //Properties
 
-    public virtual FrameworkElement ResolveEditor( PropertyItem propertyItem )
-    {
-      Editor = this.CreateEditor();
-      SetValueDependencyProperty();
-      SetControlProperties( propertyItem );
-      ResolveValueBinding( propertyItem );
-      return Editor;
-    }
+        #region ITypeEditor Members
 
-    #endregion //ITypeEditor Members
+        public virtual FrameworkElement ResolveEditor(PropertyItem propertyItem)
+        {
+            Editor = this.CreateEditor();
+            SetValueDependencyProperty();
+            SetControlProperties(propertyItem);
+            ResolveValueBinding(propertyItem);
+            return Editor;
+        }
 
-    #region Methods
+        #endregion //ITypeEditor Members
 
-    protected virtual T CreateEditor()
-    {
-      return new T();
-    }
+        #region Methods
 
-    protected virtual IValueConverter CreateValueConverter()
-    {
-      return null;
-    }
+        protected virtual T CreateEditor()
+        {
+            return new T();
+        }
 
-    protected virtual void ResolveValueBinding( PropertyItem propertyItem )
-    {
+        protected virtual IValueConverter CreateValueConverter()
+        {
+            return null;
+        }
+
+        protected virtual void ResolveValueBinding(PropertyItem propertyItem)
+        {
             var _binding = new Binding("Value")
             {
                 Source = propertyItem,
@@ -71,16 +71,16 @@ namespace Xceed.Wpf.Toolkit.PropertyGrid.Editors
                 Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay,
                 Converter = CreateValueConverter()
             };
-            BindingOperations.SetBinding( Editor, ValueProperty, _binding );
+            BindingOperations.SetBinding(Editor, ValueProperty, _binding);
+        }
+
+        protected virtual void SetControlProperties(PropertyItem propertyItem)
+        {
+            //TODO: implement in derived class
+        }
+
+        protected abstract void SetValueDependencyProperty();
+
+        #endregion //Methods
     }
-
-    protected virtual void SetControlProperties( PropertyItem propertyItem )
-    {
-      //TODO: implement in derived class
-    }
-
-    protected abstract void SetValueDependencyProperty();
-
-    #endregion //Methods
-  }
 }

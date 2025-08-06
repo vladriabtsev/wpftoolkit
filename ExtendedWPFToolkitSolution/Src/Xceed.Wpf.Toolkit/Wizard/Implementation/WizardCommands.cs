@@ -18,61 +18,61 @@ using System.Windows.Input;
 
 namespace Xceed.Wpf.Toolkit
 {
-  public static class WizardCommands
-  {
-
-    private static readonly RoutedCommand _cancelCommand = new RoutedCommand();
-    public static RoutedCommand Cancel
+    public static class WizardCommands
     {
-      get
-      {
-        return _cancelCommand;
-      }
-    }
 
-    private static readonly RoutedCommand _finishCommand = new RoutedCommand();
-    public static RoutedCommand Finish
-    {
-      get
-      {
-        return _finishCommand;
-      }
-    }
+        private static readonly RoutedCommand _cancelCommand = new RoutedCommand();
+        public static RoutedCommand Cancel
+        {
+            get
+            {
+                return _cancelCommand;
+            }
+        }
 
-    private static readonly RoutedCommand _helpCommand = new RoutedCommand();
-    public static RoutedCommand Help
-    {
-      get
-      {
-        return _helpCommand;
-      }
-    }
+        private static readonly RoutedCommand _finishCommand = new RoutedCommand();
+        public static RoutedCommand Finish
+        {
+            get
+            {
+                return _finishCommand;
+            }
+        }
 
-    private static readonly RoutedCommand _nextPageCommand = new RoutedCommand();
-    public static RoutedCommand NextPage
-    {
-      get
-      {
-        return _nextPageCommand;
-      }
-    }
+        private static readonly RoutedCommand _helpCommand = new RoutedCommand();
+        public static RoutedCommand Help
+        {
+            get
+            {
+                return _helpCommand;
+            }
+        }
 
-    private static readonly RoutedCommand _previousPageCommand = new RoutedCommand();
-    public static RoutedCommand PreviousPage
-    {
-      get
-      {
-        return _previousPageCommand;
-      }
-    }
+        private static readonly RoutedCommand _nextPageCommand = new RoutedCommand();
+        public static RoutedCommand NextPage
+        {
+            get
+            {
+                return _nextPageCommand;
+            }
+        }
 
-    private static readonly RoutedCommand _selectPageCommand = new RoutedCommand();
-    public static RoutedCommand SelectPage
-    {
-      get
-      {
-        return _selectPageCommand;
-      }
+        private static readonly RoutedCommand _previousPageCommand = new RoutedCommand();
+        public static RoutedCommand PreviousPage
+        {
+            get
+            {
+                return _previousPageCommand;
+            }
+        }
+
+        private static readonly RoutedCommand _selectPageCommand = new RoutedCommand();
+        public static RoutedCommand SelectPage
+        {
+            get
+            {
+                return _selectPageCommand;
+            }
+        }
     }
-  }
 }

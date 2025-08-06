@@ -23,122 +23,122 @@ using Xceed.Wpf.Toolkit.Core.Utilities;
 
 namespace Xceed.Wpf.Toolkit.Primitives
 {
-  public abstract class ShapeBase : Shape
-  {
-    #region Constructors
-
-    static ShapeBase()
+    public abstract class ShapeBase : Shape
     {
-      ShapeBase.StrokeDashArrayProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeDashCapProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeDashOffsetProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeEndLineCapProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeLineJoinProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeMiterLimitProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeStartLineCapProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-      ShapeBase.StrokeThicknessProperty.OverrideMetadata( typeof( ShapeBase ), new FrameworkPropertyMetadata( new PropertyChangedCallback( ShapeBase.OnStrokeChanged ) ) );
-    }
+        #region Constructors
 
-    #endregion
+        static ShapeBase()
+        {
+            ShapeBase.StrokeDashArrayProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeDashCapProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeDashOffsetProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeEndLineCapProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeLineJoinProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeMiterLimitProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeStartLineCapProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+            ShapeBase.StrokeThicknessProperty.OverrideMetadata(typeof(ShapeBase), new FrameworkPropertyMetadata(new PropertyChangedCallback(ShapeBase.OnStrokeChanged)));
+        }
 
-    #region IsPenEmptyOrUndefined Internal Property
+        #endregion
 
-    internal bool IsPenEmptyOrUndefined
-    {
-      get
-      {
-        double strokeThickness = this.StrokeThickness;
-        return ( this.Stroke == null ) || DoubleHelper.IsNaN( strokeThickness ) || DoubleHelper.AreVirtuallyEqual( 0, strokeThickness );
-      }
-    }
+        #region IsPenEmptyOrUndefined Internal Property
 
-    #endregion
+        internal bool IsPenEmptyOrUndefined
+        {
+            get
+            {
+                double strokeThickness = this.StrokeThickness;
+                return (this.Stroke == null) || DoubleHelper.IsNaN(strokeThickness) || DoubleHelper.AreVirtuallyEqual(0, strokeThickness);
+            }
+        }
 
-    #region DefiningGeometry Protected Property
+        #endregion
 
-    protected abstract override Geometry DefiningGeometry
-    {
-      get;
-    }
+        #region DefiningGeometry Protected Property
 
-    #endregion
+        protected abstract override Geometry DefiningGeometry
+        {
+            get;
+        }
 
-    internal virtual Rect GetDefiningGeometryBounds()
-    {
-      Geometry geometry = this.DefiningGeometry;
+        #endregion
 
-      Debug.Assert( geometry != null );
+        internal virtual Rect GetDefiningGeometryBounds()
+        {
+            Geometry geometry = this.DefiningGeometry;
 
-      return geometry.Bounds;
-    }
+            Debug.Assert(geometry != null);
 
-    internal virtual Size GetNaturalSize()
-    {
-      Geometry geometry = this.DefiningGeometry;
+            return geometry.Bounds;
+        }
 
-      Debug.Assert( geometry != null );
+        internal virtual Size GetNaturalSize()
+        {
+            Geometry geometry = this.DefiningGeometry;
 
-      Rect bounds = geometry.GetRenderBounds( GetPen() );
+            Debug.Assert(geometry != null);
 
-      return new Size( Math.Max( bounds.Right, 0 ), Math.Max( bounds.Bottom, 0 ) );
-    }
+            Rect bounds = geometry.GetRenderBounds(GetPen());
 
-    internal Pen GetPen()
-    {
-      if( this.IsPenEmptyOrUndefined )
-        return null;
+            return new Size(Math.Max(bounds.Right, 0), Math.Max(bounds.Bottom, 0));
+        }
 
-      if( _pen == null )
-      {
-        _pen = this.MakePen();
-      }
+        internal Pen GetPen()
+        {
+            if (this.IsPenEmptyOrUndefined)
+                return null;
 
-      return _pen;
-    }
+            if (_pen == null)
+            {
+                _pen = this.MakePen();
+            }
 
-    internal double GetStrokeThickness()
-    {
-      if( this.IsPenEmptyOrUndefined )
-        return 0d;
+            return _pen;
+        }
 
-      return Math.Abs( this.StrokeThickness );
-    }
+        internal double GetStrokeThickness()
+        {
+            if (this.IsPenEmptyOrUndefined)
+                return 0d;
 
-    internal bool IsSizeEmptyOrUndefined( Size size )
-    {
-      return ( DoubleHelper.IsNaN( size.Width ) || DoubleHelper.IsNaN( size.Height ) || size.IsEmpty );
-    }
+            return Math.Abs(this.StrokeThickness);
+        }
 
-    private static void OnStrokeChanged( DependencyObject d, DependencyPropertyChangedEventArgs e )
-    {
-      ( ( ShapeBase )d )._pen = null;
-    }
+        internal bool IsSizeEmptyOrUndefined(Size size)
+        {
+            return (DoubleHelper.IsNaN(size.Width) || DoubleHelper.IsNaN(size.Height) || size.IsEmpty);
+        }
 
-    private Pen MakePen()
-    {
+        private static void OnStrokeChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((ShapeBase)d)._pen = null;
+        }
+
+        private Pen MakePen()
+        {
             Pen pen = new Pen
             {
                 Brush = this.Stroke,
                 DashCap = this.StrokeDashCap
             };
-            if ( this.StrokeDashArray != null || this.StrokeDashOffset != 0.0 )
-      {
-        pen.DashStyle = new DashStyle( this.StrokeDashArray, this.StrokeDashOffset );
-      }
-      pen.EndLineCap = this.StrokeEndLineCap;
-      pen.LineJoin = this.StrokeLineJoin;
-      pen.MiterLimit = this.StrokeMiterLimit;
-      pen.StartLineCap = this.StrokeStartLineCap;
-      pen.Thickness = Math.Abs( this.StrokeThickness );
+            if (this.StrokeDashArray != null || this.StrokeDashOffset != 0.0)
+            {
+                pen.DashStyle = new DashStyle(this.StrokeDashArray, this.StrokeDashOffset);
+            }
+            pen.EndLineCap = this.StrokeEndLineCap;
+            pen.LineJoin = this.StrokeLineJoin;
+            pen.MiterLimit = this.StrokeMiterLimit;
+            pen.StartLineCap = this.StrokeStartLineCap;
+            pen.Thickness = Math.Abs(this.StrokeThickness);
 
-      return pen;
+            return pen;
+        }
+
+        #region Private Fields
+
+        private Pen _pen = null;
+
+        #endregion
     }
-
-    #region Private Fields
-
-    private Pen _pen = null;
-
-    #endregion
-  }
 }

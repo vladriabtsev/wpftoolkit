@@ -15,9 +15,6 @@
   ***********************************************************************************/
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -25,164 +22,164 @@ using System.Windows.Media;
 
 namespace Xceed.Wpf.Toolkit.PropertyGrid
 {
-  public class TrimmedTextBlock : TextBlock
-  {
-    #region Constructor
-
-    public TrimmedTextBlock()
+    public class TrimmedTextBlock : TextBlock
     {
-      this.SizeChanged += this.TrimmedTextBlock_SizeChanged;
-    }
+        #region Constructor
 
-    #endregion
+        public TrimmedTextBlock()
+        {
+            this.SizeChanged += this.TrimmedTextBlock_SizeChanged;
+        }
 
-    #region IsTextTrimmed Property
+        #endregion
 
-    public static readonly DependencyProperty IsTextTrimmedProperty = DependencyProperty.Register( "IsTextTrimmed", typeof( bool ), typeof( TrimmedTextBlock ), new PropertyMetadata( false, OnIsTextTrimmedChanged ) );
-    public bool IsTextTrimmed
-    {
-      get
-      {
-        return ( bool )GetValue( IsTextTrimmedProperty );
-      }
-      private set
-      {
-        SetValue( IsTextTrimmedProperty, value );
-      }
-    }
+        #region IsTextTrimmed Property
 
-    private static void OnIsTextTrimmedChanged( DependencyObject d, DependencyPropertyChangedEventArgs e )
-    {
-      var textBlock = d as TrimmedTextBlock;
-      if( textBlock != null )
-      {
-        textBlock.OnIsTextTrimmedChanged( ( bool )e.OldValue, ( bool )e.NewValue );
-      }
-    }
+        public static readonly DependencyProperty IsTextTrimmedProperty = DependencyProperty.Register("IsTextTrimmed", typeof(bool), typeof(TrimmedTextBlock), new PropertyMetadata(false, OnIsTextTrimmedChanged));
+        public bool IsTextTrimmed
+        {
+            get
+            {
+                return (bool)GetValue(IsTextTrimmedProperty);
+            }
+            private set
+            {
+                SetValue(IsTextTrimmedProperty, value);
+            }
+        }
 
-    private void OnIsTextTrimmedChanged( bool oldValue, bool newValue )
-    {
-        this.ToolTip = ( newValue ) ? this.Text : null;
-    }
+        private static void OnIsTextTrimmedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var textBlock = d as TrimmedTextBlock;
+            if (textBlock != null)
+            {
+                textBlock.OnIsTextTrimmedChanged((bool)e.OldValue, (bool)e.NewValue);
+            }
+        }
 
-    #endregion
+        private void OnIsTextTrimmedChanged(bool oldValue, bool newValue)
+        {
+            this.ToolTip = (newValue) ? this.Text : null;
+        }
 
-    #region HighlightedBrush
+        #endregion
 
-    public static readonly DependencyProperty HighlightedBrushProperty = DependencyProperty.Register( "HighlightedBrush", typeof( Brush ), typeof( TrimmedTextBlock ), new FrameworkPropertyMetadata( Brushes.Yellow ) );
+        #region HighlightedBrush
 
-    public Brush HighlightedBrush
-    {
-      get
-      {
-        return ( Brush )GetValue( HighlightedBrushProperty );
-      }
-      set
-      {
-        SetValue( HighlightedBrushProperty, value );
-      }
-    }
+        public static readonly DependencyProperty HighlightedBrushProperty = DependencyProperty.Register("HighlightedBrush", typeof(Brush), typeof(TrimmedTextBlock), new FrameworkPropertyMetadata(Brushes.Yellow));
 
-    #endregion
+        public Brush HighlightedBrush
+        {
+            get
+            {
+                return (Brush)GetValue(HighlightedBrushProperty);
+            }
+            set
+            {
+                SetValue(HighlightedBrushProperty, value);
+            }
+        }
 
-    #region HighlightedText
+        #endregion
 
-    public static readonly DependencyProperty HighlightedTextProperty = DependencyProperty.Register( "HighlightedText", typeof( string ), typeof( TrimmedTextBlock ), new FrameworkPropertyMetadata( null, HighlightedTextChanged ) );
+        #region HighlightedText
 
-    public string HighlightedText
-    {
-      get
-      {
-        return ( string )GetValue( HighlightedTextProperty );
-      }
-      set
-      {
-        SetValue( HighlightedTextProperty, value );
-      }
-    }
+        public static readonly DependencyProperty HighlightedTextProperty = DependencyProperty.Register("HighlightedText", typeof(string), typeof(TrimmedTextBlock), new FrameworkPropertyMetadata(null, HighlightedTextChanged));
 
-    private static void HighlightedTextChanged( DependencyObject sender, DependencyPropertyChangedEventArgs e )
-    {
-      var trimmedTextBlock = sender as TrimmedTextBlock;
-      if( trimmedTextBlock != null )
-      {
-        trimmedTextBlock.HighlightedTextChanged( ( string )e.OldValue, ( string )e.NewValue );
-      }
-    }
+        public string HighlightedText
+        {
+            get
+            {
+                return (string)GetValue(HighlightedTextProperty);
+            }
+            set
+            {
+                SetValue(HighlightedTextProperty, value);
+            }
+        }
 
-    protected virtual void HighlightedTextChanged( string oldValue, string newValue )
-    {
-      if( this.Text.Length == 0 )
-        return;
+        private static void HighlightedTextChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var trimmedTextBlock = sender as TrimmedTextBlock;
+            if (trimmedTextBlock != null)
+            {
+                trimmedTextBlock.HighlightedTextChanged((string)e.OldValue, (string)e.NewValue);
+            }
+        }
 
-      // Set original text without highlight.
-      if( newValue == null )
-      {
-        var newrRun = new Run( this.Text );
-        this.Inlines.Clear();        
-        this.Inlines.Add( newrRun );
+        protected virtual void HighlightedTextChanged(string oldValue, string newValue)
+        {
+            if (this.Text.Length == 0)
+                return;
 
-        return;
-      }
+            // Set original text without highlight.
+            if (newValue == null)
+            {
+                var newrRun = new Run(this.Text);
+                this.Inlines.Clear();
+                this.Inlines.Add(newrRun);
 
-      var startHighlightedIndex = this.Text.IndexOf( newValue, StringComparison.InvariantCultureIgnoreCase );
-      var endHighlightedIndex = startHighlightedIndex + newValue.Length;
+                return;
+            }
 
-      var startUnHighlightedText = this.Text.Substring( 0, startHighlightedIndex );
-      var highlightedText = this.Text.Substring( startHighlightedIndex, newValue.Length );
-      var endUnHighlightedText = this.Text.Substring( endHighlightedIndex, this.Text.Length - endHighlightedIndex );
+            var startHighlightedIndex = this.Text.IndexOf(newValue, StringComparison.InvariantCultureIgnoreCase);
+            var endHighlightedIndex = startHighlightedIndex + newValue.Length;
 
-      this.Inlines.Clear();
+            var startUnHighlightedText = this.Text.Substring(0, startHighlightedIndex);
+            var highlightedText = this.Text.Substring(startHighlightedIndex, newValue.Length);
+            var endUnHighlightedText = this.Text.Substring(endHighlightedIndex, this.Text.Length - endHighlightedIndex);
 
-      // Start Un-Highlighted text
-      var run = new Run( startUnHighlightedText );
-      this.Inlines.Add( run );
+            this.Inlines.Clear();
+
+            // Start Un-Highlighted text
+            var run = new Run(startUnHighlightedText);
+            this.Inlines.Add(run);
 
             // Highlighted text
             run = new Run(highlightedText)
             {
                 Background = this.HighlightedBrush
             };
-            this.Inlines.Add( run );
+            this.Inlines.Add(run);
 
-      // End Un-Highlighted text
-      run = new Run( endUnHighlightedText );
-      this.Inlines.Add( run );
+            // End Un-Highlighted text
+            run = new Run(endUnHighlightedText);
+            this.Inlines.Add(run);
+        }
+
+        #endregion
+
+        #region Event Handler
+
+        private void TrimmedTextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var textBlock = sender as TextBlock;
+            if (textBlock != null)
+            {
+                this.IsTextTrimmed = this.GetIsTextTrimmed(textBlock);
+            }
+        }
+
+        #endregion
+
+        #region Private Methods
+
+        private bool GetIsTextTrimmed(TextBlock textBlock)
+        {
+            if (textBlock == null)
+                return false;
+            if (textBlock.TextTrimming == TextTrimming.None)
+                return false;
+            if (textBlock.TextWrapping != TextWrapping.NoWrap)
+                return false;
+
+            var textBlockActualWidth = textBlock.ActualWidth;
+            textBlock.Measure(new Size(double.MaxValue, double.MaxValue));
+            var textBlockDesiredWidth = textBlock.DesiredSize.Width;
+
+            return (textBlockActualWidth < textBlockDesiredWidth);
+        }
+
+        #endregion
     }
-
-    #endregion
-
-    #region Event Handler
-
-    private void TrimmedTextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
-    {
-      var textBlock = sender as TextBlock;
-      if( textBlock != null )
-      {
-        this.IsTextTrimmed = this.GetIsTextTrimmed( textBlock );
-      }
-    }
-
-    #endregion
-
-    #region Private Methods
-
-    private bool GetIsTextTrimmed( TextBlock textBlock )
-    {
-      if( textBlock == null )
-        return false;
-      if( textBlock.TextTrimming == TextTrimming.None )
-        return false;
-      if( textBlock.TextWrapping != TextWrapping.NoWrap )
-        return false;
-
-      var textBlockActualWidth = textBlock.ActualWidth;
-      textBlock.Measure( new Size( double.MaxValue, double.MaxValue ) );
-      var textBlockDesiredWidth = textBlock.DesiredSize.Width;
-
-      return ( textBlockActualWidth < textBlockDesiredWidth );
-    }
-
-    #endregion
-  }
 }

@@ -17,330 +17,330 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
-using Xceed.Wpf.Toolkit.Core.Utilities;
 using Xceed.Wpf.Toolkit.Core;
+using Xceed.Wpf.Toolkit.Core.Utilities;
 
 namespace Xceed.Wpf.Toolkit.Media.Animation
 {
-  [TypeConverter( typeof( AnimationRateConverter ) )]
-  [StructLayout( LayoutKind.Explicit )]
-  public struct AnimationRate
-  {
-    #region Static Fields
-
-    private static readonly AnimationRate _default = new AnimationRate( true );
-
-    #endregion
-
-    #region Constructors
-
-    public AnimationRate( TimeSpan duration )
+    [TypeConverter(typeof(AnimationRateConverter))]
+    [StructLayout(LayoutKind.Explicit)]
+    public struct AnimationRate
     {
-      if( duration < TimeSpan.Zero )
-      {
-        throw new ArgumentException( ErrorMessages.GetMessage( ErrorMessages.NegativeTimeSpanNotSupported ) );
-      }
-      _speed = 0d;
-      _duration = duration.Ticks;
-      _rateType = RateType.TimeSpan;
-    }
+        #region Static Fields
 
-    public AnimationRate( double speed )
-    {
-      if( DoubleHelper.IsNaN( speed ) || speed < 0d )
-      {
-        throw new ArgumentException( ErrorMessages.GetMessage( ErrorMessages.NegativeSpeedNotSupported ) );
-      }
-      _duration = 0;
-      _speed = speed;
-      _rateType = RateType.Speed;
-    }
+        private static readonly AnimationRate _default = new AnimationRate(true);
 
-    private AnimationRate( bool ignore )
-    {
-      _duration = 0;
-      _speed = double.NaN;
-      _rateType = RateType.Speed;
-    }
+        #endregion
 
-    #endregion
+        #region Constructors
 
-    #region Default Property
-
-    public static AnimationRate Default
-    {
-      get
-      {
-        return _default;
-      }
-    }
-
-    #endregion
-
-    #region HasDuration Property
-
-    public bool HasDuration
-    {
-      get
-      {
-        return ( _rateType == RateType.TimeSpan );
-      }
-    }
-
-    #endregion
-
-    #region Duration Property
-
-    public TimeSpan Duration
-    {
-      get
-      {
-        if( this.HasDuration )
-          return TimeSpan.FromTicks( _duration );
-
-        throw new InvalidOperationException( 
-          string.Format(
-            ErrorMessages.GetMessage( ErrorMessages.InvalidRatePropertyAccessed ),
-            "Duration", 
-            this, 
-            "Speed" ) );
-      }
-    }
-
-    #endregion
-
-    #region HasSpeed Property
-
-    public bool HasSpeed
-    {
-      get
-      {
-        return ( _rateType == RateType.Speed );
-      }
-    }
-
-    #endregion
-
-    #region Speed Property
-
-    public double Speed
-    {
-      get
-      {
-        if( this.HasSpeed )
-          return _speed;
-
-        throw new InvalidOperationException( 
-          string.Format(
-            ErrorMessages.GetMessage( ErrorMessages.InvalidRatePropertyAccessed ),
-            "Speed", 
-            this, 
-            "Duration" ) );
-      }
-    }
-
-    #endregion
-
-    public AnimationRate Add( AnimationRate animationRate )
-    {
-      return this + animationRate;
-    }
-
-    public override bool Equals( Object value )
-    {
-      if( value == null )
-        return false;
-
-      if( value is AnimationRate )
-        return this.Equals( ( AnimationRate )value );
-
-      return false;
-    }
-
-    public bool Equals( AnimationRate animationRate )
-    {
-      if( this.HasDuration )
-      {
-        if( animationRate.HasDuration )
-          return _duration == animationRate._duration;
-
-        return false;
-      }
-      else // HasSpeed
-      {
-        if( animationRate.HasSpeed )
+        public AnimationRate(TimeSpan duration)
         {
-          if( DoubleHelper.IsNaN( _speed ) )
-            return DoubleHelper.IsNaN( animationRate._speed );
-
-          return _speed == animationRate._speed;
+            if (duration < TimeSpan.Zero)
+            {
+                throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeTimeSpanNotSupported));
+            }
+            _speed = 0d;
+            _duration = duration.Ticks;
+            _rateType = RateType.TimeSpan;
         }
 
-        return false;
-      }
-    }
+        public AnimationRate(double speed)
+        {
+            if (DoubleHelper.IsNaN(speed) || speed < 0d)
+            {
+                throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeSpeedNotSupported));
+            }
+            _duration = 0;
+            _speed = speed;
+            _rateType = RateType.Speed;
+        }
 
-    public static bool Equals( AnimationRate t1, AnimationRate t2 )
-    {
-      return t1.Equals( t2 );
-    }
+        private AnimationRate(bool ignore)
+        {
+            _duration = 0;
+            _speed = double.NaN;
+            _rateType = RateType.Speed;
+        }
 
-    public override int GetHashCode()
-    {
-      if( this.HasDuration )
-        return _duration.GetHashCode();
+        #endregion
 
-      return _speed.GetHashCode();
-    }
+        #region Default Property
 
-    public AnimationRate Subtract( AnimationRate animationRate )
-    {
-      return this - animationRate;
-    }
+        public static AnimationRate Default
+        {
+            get
+            {
+                return _default;
+            }
+        }
 
-    public override string ToString()
-    {
-      if( this.HasDuration )
-        return TypeDescriptor.GetConverter( _duration ).ConvertToString( _duration );
+        #endregion
 
-      return TypeDescriptor.GetConverter( _speed ).ConvertToString( _speed );
-    }
+        #region HasDuration Property
 
-    #region Operators Methods
+        public bool HasDuration
+        {
+            get
+            {
+                return (_rateType == RateType.TimeSpan);
+            }
+        }
 
-    public static implicit operator AnimationRate( TimeSpan duration )
-    {
-      if( duration < TimeSpan.Zero )
-        throw new ArgumentException( ErrorMessages.GetMessage( ErrorMessages.NegativeTimeSpanNotSupported ) );
+        #endregion
 
-      return new AnimationRate( duration );
-    }
+        #region Duration Property
 
-    public static implicit operator AnimationRate( double speed )
-    {
-      if( DoubleHelper.IsNaN( speed ) || speed < 0 )
-        throw new ArgumentException( ErrorMessages.GetMessage( ErrorMessages.NegativeSpeedNotSupported ) );
+        public TimeSpan Duration
+        {
+            get
+            {
+                if (this.HasDuration)
+                    return TimeSpan.FromTicks(_duration);
 
-      return new AnimationRate( speed );
-    }
+                throw new InvalidOperationException(
+                  string.Format(
+                    ErrorMessages.GetMessage(ErrorMessages.InvalidRatePropertyAccessed),
+                    "Duration",
+                    this,
+                    "Speed"));
+            }
+        }
 
-    public static implicit operator AnimationRate( int speed )
-    {
-      if( DoubleHelper.IsNaN( speed ) || speed < 0 )
-        throw new ArgumentException( ErrorMessages.GetMessage( ErrorMessages.NegativeSpeedNotSupported ) );
+        #endregion
 
-      return new AnimationRate( ( double )speed );
-    }
+        #region HasSpeed Property
 
-    public static AnimationRate operator +( AnimationRate t1, AnimationRate t2 )
-    {
-      if( t1.HasDuration && t2.HasDuration )
-        return new AnimationRate( t1._duration + t2._duration );
+        public bool HasSpeed
+        {
+            get
+            {
+                return (_rateType == RateType.Speed);
+            }
+        }
 
-      if( t1.HasSpeed && t2.HasSpeed )
-        return new AnimationRate( t1._speed + t2._speed );
+        #endregion
 
-      return ( AnimationRate )0d;
-    }
+        #region Speed Property
 
-    public static AnimationRate operator -( AnimationRate t1, AnimationRate t2 )
-    {
-      if( t1.HasDuration && t2.HasDuration )
-        return new AnimationRate( t1._duration - t2._duration );
+        public double Speed
+        {
+            get
+            {
+                if (this.HasSpeed)
+                    return _speed;
 
-      if( t1.HasSpeed && t2.HasSpeed )
-        return new AnimationRate( t1._speed - t2._speed );
+                throw new InvalidOperationException(
+                  string.Format(
+                    ErrorMessages.GetMessage(ErrorMessages.InvalidRatePropertyAccessed),
+                    "Speed",
+                    this,
+                    "Duration"));
+            }
+        }
 
-      return ( AnimationRate )0d;
-    }
+        #endregion
 
-    public static bool operator ==( AnimationRate t1, AnimationRate t2 )
-    {
-      return t1.Equals( t2 );
-    }
+        public AnimationRate Add(AnimationRate animationRate)
+        {
+            return this + animationRate;
+        }
 
-    public static bool operator !=( AnimationRate t1, AnimationRate t2 )
-    {
-      return !( t1.Equals( t2 ) );
-    }
+        public override bool Equals(Object value)
+        {
+            if (value == null)
+                return false;
 
-    public static bool operator >( AnimationRate t1, AnimationRate t2 )
-    {
-      if( t1.HasDuration && t2.HasDuration )
-        return t1._duration > t2._duration;
+            if (value is AnimationRate)
+                return this.Equals((AnimationRate)value);
 
-      if( t1.HasSpeed && t2.HasSpeed )
-        return ( t1._speed > t2._speed ) && !DoubleHelper.AreVirtuallyEqual( t1._speed, t2._speed );
+            return false;
+        }
 
-      // arbitrary: assume a Speed is greater than a Duration
-      return t1.HasSpeed;
-    }
+        public bool Equals(AnimationRate animationRate)
+        {
+            if (this.HasDuration)
+            {
+                if (animationRate.HasDuration)
+                    return _duration == animationRate._duration;
 
-    public static bool operator >=( AnimationRate t1, AnimationRate t2 )
-    {
-      return !( t1 < t2 );
-    }
+                return false;
+            }
+            else // HasSpeed
+            {
+                if (animationRate.HasSpeed)
+                {
+                    if (DoubleHelper.IsNaN(_speed))
+                        return DoubleHelper.IsNaN(animationRate._speed);
 
-    public static bool operator <( AnimationRate t1, AnimationRate t2 )
-    {
-      if( t1.HasDuration && t2.HasDuration )
-        return t1._duration < t2._duration;
+                    return _speed == animationRate._speed;
+                }
 
-      if( t1.HasSpeed && t2.HasSpeed )
-        return ( t1._speed < t2._speed ) && !DoubleHelper.AreVirtuallyEqual( t1._speed, t2._speed );
+                return false;
+            }
+        }
 
-      // arbitrary: assume a Speed is greater than a Duration
-      return t1.HasDuration;
-    }
+        public static bool Equals(AnimationRate t1, AnimationRate t2)
+        {
+            return t1.Equals(t2);
+        }
 
-    public static bool operator <=( AnimationRate t1, AnimationRate t2 )
-    {
-      return !( t1 > t2 );
-    }
+        public override int GetHashCode()
+        {
+            if (this.HasDuration)
+                return _duration.GetHashCode();
 
-    public static int Compare( AnimationRate t1, AnimationRate t2 )
-    {
-      if( t1 < t2 )
-        return -1;
+            return _speed.GetHashCode();
+        }
 
-      if( t1 > t2 )
-        return 1;
+        public AnimationRate Subtract(AnimationRate animationRate)
+        {
+            return this - animationRate;
+        }
 
-      // Neither is greater than the other
-      return 0;
-    }
+        public override string ToString()
+        {
+            if (this.HasDuration)
+                return TypeDescriptor.GetConverter(_duration).ConvertToString(_duration);
 
-    public static AnimationRate Plus( AnimationRate animationRate )
-    {
-      return animationRate;
-    }
+            return TypeDescriptor.GetConverter(_speed).ConvertToString(_speed);
+        }
 
-    public static AnimationRate operator +( AnimationRate animationRate )
-    {
-      return animationRate;
-    }
+        #region Operators Methods
 
-    #endregion
+        public static implicit operator AnimationRate(TimeSpan duration)
+        {
+            if (duration < TimeSpan.Zero)
+                throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeTimeSpanNotSupported));
 
-    #region Private Fields
+            return new AnimationRate(duration);
+        }
 
-    [FieldOffset( 0 )]
+        public static implicit operator AnimationRate(double speed)
+        {
+            if (DoubleHelper.IsNaN(speed) || speed < 0)
+                throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeSpeedNotSupported));
+
+            return new AnimationRate(speed);
+        }
+
+        public static implicit operator AnimationRate(int speed)
+        {
+            if (DoubleHelper.IsNaN(speed) || speed < 0)
+                throw new ArgumentException(ErrorMessages.GetMessage(ErrorMessages.NegativeSpeedNotSupported));
+
+            return new AnimationRate((double)speed);
+        }
+
+        public static AnimationRate operator +(AnimationRate t1, AnimationRate t2)
+        {
+            if (t1.HasDuration && t2.HasDuration)
+                return new AnimationRate(t1._duration + t2._duration);
+
+            if (t1.HasSpeed && t2.HasSpeed)
+                return new AnimationRate(t1._speed + t2._speed);
+
+            return (AnimationRate)0d;
+        }
+
+        public static AnimationRate operator -(AnimationRate t1, AnimationRate t2)
+        {
+            if (t1.HasDuration && t2.HasDuration)
+                return new AnimationRate(t1._duration - t2._duration);
+
+            if (t1.HasSpeed && t2.HasSpeed)
+                return new AnimationRate(t1._speed - t2._speed);
+
+            return (AnimationRate)0d;
+        }
+
+        public static bool operator ==(AnimationRate t1, AnimationRate t2)
+        {
+            return t1.Equals(t2);
+        }
+
+        public static bool operator !=(AnimationRate t1, AnimationRate t2)
+        {
+            return !(t1.Equals(t2));
+        }
+
+        public static bool operator >(AnimationRate t1, AnimationRate t2)
+        {
+            if (t1.HasDuration && t2.HasDuration)
+                return t1._duration > t2._duration;
+
+            if (t1.HasSpeed && t2.HasSpeed)
+                return (t1._speed > t2._speed) && !DoubleHelper.AreVirtuallyEqual(t1._speed, t2._speed);
+
+            // arbitrary: assume a Speed is greater than a Duration
+            return t1.HasSpeed;
+        }
+
+        public static bool operator >=(AnimationRate t1, AnimationRate t2)
+        {
+            return !(t1 < t2);
+        }
+
+        public static bool operator <(AnimationRate t1, AnimationRate t2)
+        {
+            if (t1.HasDuration && t2.HasDuration)
+                return t1._duration < t2._duration;
+
+            if (t1.HasSpeed && t2.HasSpeed)
+                return (t1._speed < t2._speed) && !DoubleHelper.AreVirtuallyEqual(t1._speed, t2._speed);
+
+            // arbitrary: assume a Speed is greater than a Duration
+            return t1.HasDuration;
+        }
+
+        public static bool operator <=(AnimationRate t1, AnimationRate t2)
+        {
+            return !(t1 > t2);
+        }
+
+        public static int Compare(AnimationRate t1, AnimationRate t2)
+        {
+            if (t1 < t2)
+                return -1;
+
+            if (t1 > t2)
+                return 1;
+
+            // Neither is greater than the other
+            return 0;
+        }
+
+        public static AnimationRate Plus(AnimationRate animationRate)
+        {
+            return animationRate;
+        }
+
+        public static AnimationRate operator +(AnimationRate animationRate)
+        {
+            return animationRate;
+        }
+
+        #endregion
+
+        #region Private Fields
+
+        [FieldOffset(0)]
         readonly long _duration;
-    [FieldOffset( 0 )]
+        [FieldOffset(0)]
         readonly double _speed;
-    [FieldOffset( 8 )]
+        [FieldOffset(8)]
         readonly RateType _rateType;
 
-    #endregion
+        #endregion
 
-    #region RateType Nested Type
+        #region RateType Nested Type
 
-    private enum RateType
-    {
-      TimeSpan,
-      Speed,
+        private enum RateType
+        {
+            TimeSpan,
+            Speed,
+        }
+
+        #endregion
     }
-
-    #endregion
-  }
 }

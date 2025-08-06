@@ -21,21 +21,21 @@ using System.Windows.Data;
 
 namespace Xceed.Wpf.Toolkit.Converters
 {
-  public class BorderThicknessConverter : IValueConverter
-  {
-    public object Convert( object value, Type targetType, object parameter, CultureInfo culture )
+    public class BorderThicknessConverter : IValueConverter
     {
-      // Use the left value on the right as Thickness.
-      var originalThickness = value as Thickness?;
-      if( originalThickness.HasValue )
-        return new Thickness( originalThickness.Value.Left, originalThickness.Value.Top, originalThickness.Value.Left, originalThickness.Value.Bottom );
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            // Use the left value on the right as Thickness.
+            var originalThickness = value as Thickness?;
+            if (originalThickness.HasValue)
+                return new Thickness(originalThickness.Value.Left, originalThickness.Value.Top, originalThickness.Value.Left, originalThickness.Value.Bottom);
 
-      return value;
-    }
+            return value;
+        }
 
-    public object ConvertBack( object value, Type targetType, object parameter, CultureInfo culture )
-    {
-      throw new NotImplementedException();
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
-  }
 }
